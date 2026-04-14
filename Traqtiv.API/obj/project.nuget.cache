@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y5GZiB/j95I=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bilbo\\Traqtiv\\Traqtiv.API\\Traqtiv.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bilbo\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
+    "C:\\Users\\bilbo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.14\\microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "C:\\Users\\bilbo\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
