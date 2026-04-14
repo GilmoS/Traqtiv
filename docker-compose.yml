@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: traqtiv_db
+    environment:
+      POSTGRES_USER: traqtiv_user
+      POSTGRES_PASSWORD: traqtiv_pass
+      POSTGRES_DB: SmartFitnessDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - traqtiv_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U traqtiv_user -d SmartFitnessDb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  traqtiv_pgdata:
