@@ -1,0 +1,15 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+obj/
+bin/
+
+# Docker override
+docker-compose.override.yml
+
+# Environment files
+*.env
+appsettings.Development.json
