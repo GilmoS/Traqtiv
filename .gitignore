@@ -12,4 +12,5 @@ docker-compose.override.yml
 
 # Environment files
 *.env
+appsettings.json
 appsettings.Development.json
