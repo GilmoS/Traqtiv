@@ -211,3 +211,103 @@ export function EmptyState({ icon, message }: {icon: ReactNode,message: string})
     </div>
   )
 }
+
+
+// ─── Modal ────────────────────────────────────────────────
+// A modal component that displays content in an overlay, with a title and a close button.
+export function Modal({ title, children, onClose, width = 480 }: {title: string ,children: ReactNode 
+onClose: () => void ,width?: number}) 
+{
+    // The Modal component creates a fixed overlay that covers the entire viewport, with a semi-transparent background and a blur effect.
+    //  The modal content is centered within the overlay and styled with a background, border, padding, and a fade-in animation.
+    //  The header of the modal includes the title and a close button, which triggers the onClose function when clicked. The content of the modal is displayed below the header.
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(0,0,0,0.7)',
+        zIndex: 1000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        backdropFilter: 'blur(4px)',
+      }}
+      onClick={e => {if (e.target === e.currentTarget) onClose()}} // Close modal when clicking outside of the content
+    >
+      <div style={{
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius)',
+        padding: 28,
+        width: '100%',
+        maxWidth: width,
+        animation: 'fadeIn 0.2s ease',
+      }}>
+        {/* Header */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: 24,
+        }}>
+          <h2 style={{ fontSize: 18, fontWeight: 700 }}>{title}</h2>
+          <button
+            onClick={onClose}
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: 20,
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+            }}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Content */}
+        {children}
+      </div>
+    </div>
+  )
+}
+
+// ─── StatCard ─────────────────────────────────────────────
+// A card component designed to display a statistic, including a label, value, optional unit, and an icon.
+export function StatCard({ label, value, unit, icon, color = 'var(--accent)' }: {label: string,value: string | number,unit?: string,icon: ReactNode,color?: string}) 
+{
+    // The StatCard component is structured as a card with a header that includes the label and an icon, and a body that displays the value and an optional unit.
+    //  The header is styled to align the label and icon on opposite sides, while the body emphasizes the value with a larger font size and the specified color.
+    //  The unit is displayed in a smaller font size next to the value if provided.
+  return (
+    <Card style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <span style={{ fontSize: 13, color: 'var(--text-secondary)', fontWeight: 500 }}>
+          {label}
+        </span>
+        <div style={{
+          width: 36,
+          height: 36,
+          borderRadius: 8,
+          background: color + '18',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color,
+        }}>
+          {icon}
+        </div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+        <span style={{ fontSize: 28, fontWeight: 700, color }}>
+          {value}
+        </span>
+        {unit && (
+          <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{unit}</span>
+        )}
+      </div>
+    </Card>
+  )
+}
