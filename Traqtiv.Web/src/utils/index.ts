@@ -2,19 +2,11 @@ import { WorkoutType, WorkoutStatus, RecommendationType, AlertSeverity } from '.
 
 // ─── תאריכים ──────────────────────────────────────────────
 export const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString('he-IL', {
-    day: '2-digit', month: '2-digit', year: 'numeric'
-  })
+  new Date(dateStr).toLocaleDateString('he-IL',{day: '2-digit', month: '2-digit', year: 'numeric'})
 
-export const formatDateShort = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString('he-IL', {
-    day: '2-digit', month: '2-digit'
-  })
+export const formatDateShort = (dateStr: string) =>new Date(dateStr).toLocaleDateString('he-IL', {day: '2-digit', month: '2-digit'})
 
-export const formatDateTime = (dateStr: string) =>
-  new Date(dateStr).toLocaleString('he-IL', {
-    day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
-  })
+export const formatDateTime = (dateStr: string) =>new Date(dateStr).toLocaleString('he-IL', {day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'})
 
 export const todayISO = () => new Date().toISOString().split('T')[0]
 
@@ -53,16 +45,8 @@ export const alertSeverityColor: Record<AlertSeverity, string> = {
 export const recommendationTypeLabel: Record<RecommendationType, string> = {
   [RecommendationType.Weather]: 'Weather',
   [RecommendationType.Overload]: 'Overload',
-  [RecommendationType.Inactivity]: 'Inactivity',
-}
+  [RecommendationType.Inactivity]: 'Inactivity',}
 
 // generic function to prepare chart data by sorting items by date and adding a label
-export const prepareChartData = <T extends { date?: string; measuredAt?: string }>(
-  items: T[],
-  dateKey: 'date' | 'measuredAt' = 'date'
-) =>
-  [...items]
-    .sort((a, b) =>
-      new Date(a[dateKey] as string).getTime() - new Date(b[dateKey] as string).getTime()
-    )
-    .map(item => ({ ...item, label: formatDateShort(item[dateKey] as string) }))
+export const prepareChartData = <T extends { date?: string; measuredAt?: string }>(items: T[],dateKey: 'date' | 'measuredAt' = 'date') =>
+  [...items].sort((a, b) =>new Date(a[dateKey] as string).getTime() - new Date(b[dateKey] as string).getTime()).map(item => ({ ...item, label: formatDateShort(item[dateKey] as string)}))
