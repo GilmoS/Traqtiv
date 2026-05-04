@@ -84,7 +84,8 @@ export function RegisterPage() {
             <Input label="Password" type="password" value={form.password} onChange={set('password')} required />
             <Input label="Date of Birth" type="date" value={form.dateOfBirth} onChange={set('dateOfBirth')} required />
 
-            {error && (
+            {error && 
+            (
               <div style={{
                 background: 'var(--red-dim)',
                 border: '1px solid var(--red)',
