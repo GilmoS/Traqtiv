@@ -63,7 +63,8 @@ export function LoginPage() {
           </p>
         </div>
 
-        {/* Form Card */}
+        
+        {/* Login Form */}
         <div style={{
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',
@@ -73,6 +74,7 @@ export function LoginPage() {
           <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24 }}>Sign In</h2>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {/* Email and Password Inputs */}
             <Input
               label="Email"
               type="email"
@@ -81,6 +83,7 @@ export function LoginPage() {
               placeholder="you@example.com"
               required
             />
+            {/* Password input with masking */}
             <Input
               label="Password"
               type="password"
@@ -89,7 +92,7 @@ export function LoginPage() {
               placeholder="••••••••"
               required
             />
-
+            {/* Error message display */}
             {error && (
               <div style={{
                 background: 'var(--red-dim)',
@@ -111,7 +114,7 @@ export function LoginPage() {
               Sign In
             </Button>
           </form>
-
+            {/* Link to registration page for new users */}
           <p style={{ fontSize: 13, color: 'var(--text-muted)', textAlign: 'center', marginTop: 20 }}>
             Don't have an account?{' '}
             <Link to="/register" style={{ color: 'var(--accent)', fontWeight: 600 }}>
