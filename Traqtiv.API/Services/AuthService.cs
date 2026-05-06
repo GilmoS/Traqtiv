@@ -46,7 +46,7 @@ namespace Traqtiv.API.Services
                 LastName = request.LastName,
                 Email = request.Email,
                 PasswordHash = PasswordHelper.HashPassword(request.Password),
-                DateOfBirth = request.DateOfBirth
+                DateOfBirth = request.DateOfBirth.ToUniversalTime()
             };
 
             await _dal.AddUserAsync(user);

@@ -10,6 +10,17 @@ using Traqtiv.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowWeb", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -88,8 +99,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-// Configure Swagger to include JWT authentication in the API documentation, allowing developers to test authenticated endpoints directly from the Swagger UI
-// This configuration adds a security definition for Bearer tokens and a security requirement to ensure that the Swagger UI prompts for a JWT token when testing protected endpoints
+app.UseCors("AllowWeb"); // Enable CORS with the defined policy to allow requests from the specified origin (http://localhost:5173)
+
+
 
 
 // Enforce HTTPS, enable authentication and authorization middleware, and map controller routes to handle incoming requests
