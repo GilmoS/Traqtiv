@@ -59,6 +59,10 @@ export function WorkoutsPage() {
       alert('Duration must be greater than 0')
       return
    }
+   if (form.status === WorkoutStatus.Completed && new Date(form.date) > new Date()) {
+    alert('A completed workout cannot have a future date')
+    return
+  }
   if (editId) {
     await updateMutation.mutateAsync({ id: editId, data: form })
   } else
