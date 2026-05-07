@@ -167,7 +167,15 @@ return (
                     <Button variant="ghost" size="sm" onClick={() => openEdit(w)}>
                       <Pencil size={14} />
                     </Button>
-                    <Button variant="ghost" size="sm" onClick={() => deleteMutation.mutate(w.id)} style={{ color: 'var(--red)' }}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        if (window.confirm('Are you sure you want to delete this workout?')) {
+                          deleteMutation.mutate(w.id)
+                        }
+                      }}
+                      style={{ color: 'var(--red)' }}>
                       <Trash2 size={14} />
                     </Button>
                   </div>
