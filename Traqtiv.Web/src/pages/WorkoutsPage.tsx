@@ -23,7 +23,7 @@ const emptyForm: AddWorkoutDto = {
 //  It allows users to view their workout history, add new workouts, edit existing ones, and delete workouts.
 //  It also provides filtering options to view workouts by status (completed, planned, missed) and displays a chart of workout trends over time.
 export function WorkoutsPage() {
-  const { data: workouts = [], isLoading } = useWorkouts()
+  const { data: workouts = [], isLoading, isError } = useWorkouts()
   const addMutation = useAddWorkout()
   const updateMutation = useUpdateWorkout()
   const deleteMutation = useDeleteWorkout()
@@ -49,6 +49,8 @@ export function WorkoutsPage() {
     setEditId(w.id)
     setShowModal(true)
   }
+
+  
 // The handleSave function is called when the user clicks the "Save" button in the modal after adding or editing a workout.
 // It checks if there is an editId to determine whether to call the update mutation (for editing) or the add mutation (for adding a new workout).
 // After the mutation is completed, it closes the modal.
@@ -128,7 +130,18 @@ return (
       <div 
         className="fade-in-3" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {isLoading ? <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div>
+        :isError ?  <div style={{
+            padding: '16px 20px',
+          background: 'var(--red-dim)',
+          border: '1px solid var(--red)',
+          borderRadius: 'var(--radius-sm)',
+          color: 'var(--red)',
+          fontSize: 14,
+          }}>
+        Unable to connect to server. Please try again later.
+        </div>
           : sorted.length === 0 ? <EmptyState icon={<Dumbbell />} message="No workouts yet. Click 'New Workout' to get started!" />
+          
             : sorted.map(w => (
               <div
                 key={w.id} style={{
