@@ -1,4 +1,4 @@
-# Traqtiv
+# Traqtiv WIP
 
 Traqtiv is a modular platform designed to manage, track, and visualize operational data across multiple services. It includes a backend API, a web dashboard, and supporting infrastructure for local development.
 
