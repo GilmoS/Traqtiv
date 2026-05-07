@@ -1,47 +1,35 @@
-#Traqtiv
+# Traqtiv
+
 Traqtiv is a modular platform designed to manage, track, and visualize operational data across multiple services. It includes a backend API, a web dashboard, and supporting infrastructure for local development.
 
-🚀 Features
-Traqtiv.API — RESTful backend service
+## 🚀 Features
 
-Traqtiv.Web — React‑based dashboard for visualization and management
+* Traqtiv.API — RESTful backend service
 
-Docker Compose for easy local environment setup
+* Traqtiv.Web — React‑based dashboard for visualization and management
 
-Modular architecture for clean separation of concerns
+* Docker Compose for easy local environment setup
 
-📦 Project Structure
-Code
+* Modular architecture for clean separation of concerns
+
+## 📦 Project Structure
 Traqtiv/
-├── Traqtiv.API        # Backend service
-├── Traqtiv.Web        # Frontend dashboard
-├── docker-compose.yml # Local environment orchestration
+
+├── Traqtiv.API         	# Backend service
+
+├── Traqtiv.Web         	# Frontend dashboard
+
+├── docker-compose.yml  	# Local environment orchestration
+
 └── README.md
-🛠️ Getting Started
-Prerequisites
-Node.js (for Traqtiv.Web)
 
-.NET SDK (for Traqtiv.API)
+## 🛠️ Getting Started
+***Prerequisites***
 
-Docker (optional but recommended)
+* Node.js (for Traqtiv.Web)
 
-Run Locally
-Using Docker:
+* .NET SDK (for Traqtiv.API)
 
-bash
-docker-compose up --build
-Or run each service manually:
+* Docker (optional but recommended)
 
-API
 
-bash
-cd Traqtiv.API
-dotnet run
-Web
-
-bash
-cd Traqtiv.Web
-npm install
-npm start
-📄 License
-MIT (or update if needed)
