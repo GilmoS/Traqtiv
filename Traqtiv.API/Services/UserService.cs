@@ -34,7 +34,7 @@ namespace Traqtiv.API.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                DateOfBirth = user.DateOfBirth
+                DateOfBirth = user.DateOfBirth.ToUniversalTime()
             };
         }
 
@@ -60,7 +60,7 @@ namespace Traqtiv.API.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                DateOfBirth = user.DateOfBirth
+                DateOfBirth = user.DateOfBirth.ToUniversalTime()
             };
         }
 
@@ -78,7 +78,7 @@ namespace Traqtiv.API.Services
                 Weight = m.Weight,
                 RestingHeartRate = m.RestingHeartRate,
                 BMI = m.BMI,
-                MeasuredAt = m.MeasuredAt
+                MeasuredAt = m.MeasuredAt.ToUniversalTime()
             }).ToList();
         }
 
@@ -93,7 +93,7 @@ namespace Traqtiv.API.Services
                 Weight = request.Weight,
                 RestingHeartRate = request.RestingHeartRate,
                 BMI = request.BMI,
-                MeasuredAt = DateTime.UtcNow
+                MeasuredAt = DateTime.UtcNow.ToUniversalTime()
             };
 
             await _dal.AddMetricsAsync(metrics);

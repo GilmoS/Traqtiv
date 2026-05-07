@@ -10,7 +10,6 @@ const navItems = [
   { to: '/metrics', icon: <BarChart3 size={18} />, label: 'Body Metrics' },
   { to: '/recommendations', icon: <Bell size={18} />, label: 'Recommendations' },
   { to: '/profile', icon: <User size={18} />, label: 'Profile' },
-  { to: '/settings', icon: <Zap size={18} />, label: 'Settings' },
 ]
 
 // Main layout component with sidebar and main content area

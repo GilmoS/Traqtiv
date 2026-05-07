@@ -38,7 +38,7 @@ namespace Traqtiv.API.Services
                 DurationMinutes = w.DurationMinutes,
                 Status = w.Status,
                 CaloriesBurned = w.CaloriesBurned,
-                Date = w.Date,
+                Date = w.Date.ToUniversalTime(),
                 Notes = w.Notes
             }).ToList();
         }
@@ -58,7 +58,7 @@ namespace Traqtiv.API.Services
                 DurationMinutes = workout.DurationMinutes,
                 Status = workout.Status,
                 CaloriesBurned = workout.CaloriesBurned,
-                Date = workout.Date,
+                Date = workout.Date.ToUniversalTime(),
                 Notes = workout.Notes
             };
         }
@@ -73,7 +73,7 @@ namespace Traqtiv.API.Services
                 DurationMinutes = request.DurationMinutes,
                 Status = request.Status,
                 CaloriesBurned = request.CaloriesBurned,
-                Date = request.Date,
+                Date = request.Date.ToUniversalTime(),
                 Notes = request.Notes
             };
 
@@ -91,7 +91,7 @@ namespace Traqtiv.API.Services
                 DurationMinutes = workout.DurationMinutes,
                 Status = workout.Status,
                 CaloriesBurned = workout.CaloriesBurned,
-                Date = workout.Date,
+                Date = workout.Date.ToUniversalTime(),
                 Notes = workout.Notes
             };
         }
@@ -109,7 +109,7 @@ namespace Traqtiv.API.Services
             workout.DurationMinutes = request.DurationMinutes;
             workout.Status = request.Status;
             workout.CaloriesBurned = request.CaloriesBurned;
-            workout.Date = request.Date;
+            workout.Date = request.Date.ToUniversalTime();
             workout.Notes = request.Notes;
 
             await _dal.UpdateWorkoutAsync(workout);
@@ -123,7 +123,7 @@ namespace Traqtiv.API.Services
                 DurationMinutes = workout.DurationMinutes,
                 Status = workout.Status,
                 CaloriesBurned = workout.CaloriesBurned,
-                Date = workout.Date,
+                Date = workout.Date.ToUniversalTime(),
                 Notes = workout.Notes
             };
         }

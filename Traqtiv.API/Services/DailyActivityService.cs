@@ -37,7 +37,7 @@ namespace Traqtiv.API.Services
                 CaloriesBurned = a.CaloriesBurned,
                 ActiveMinutes = a.ActiveMinutes,
                 DistanceKm = a.DistanceKm,
-                Date = a.Date
+                Date = a.Date.ToUniversalTime()
             }).ToList();
         }
 
@@ -46,7 +46,7 @@ namespace Traqtiv.API.Services
         /// Notifies the recommendation service about the update.
         public async Task AddDailyActivityAsync(Guid userId, AddDailyActivityDto request)
         {
-            var existing = await _dal.GetDailyActivityAsync(userId, request.Date);
+            var existing = await _dal.GetDailyActivityAsync(userId, request.Date.ToUniversalTime());
 
             if (existing != null)
             {
@@ -65,7 +65,7 @@ namespace Traqtiv.API.Services
                     CaloriesBurned = request.CaloriesBurned,
                     ActiveMinutes = request.ActiveMinutes,
                     DistanceKm = request.DistanceKm,
-                    Date = request.Date
+                    Date = request.Date.ToUniversalTime()   
                 };
                 await _dal.AddDailyActivityAsync(activity);
             }
@@ -86,8 +86,8 @@ namespace Traqtiv.API.Services
                 TotalCaloriesBurned = activities.Sum(a => a.CaloriesBurned),
                 TotalActiveMinutes = activities.Sum(a => a.ActiveMinutes),
                 TotalDistanceKm = activities.Sum(a => a.DistanceKm),
-                DateFrom = from,
-                DateTo = to
+                DateFrom = from.ToUniversalTime(),
+                DateTo = to.ToUniversalTime()
             };
         }
     }
