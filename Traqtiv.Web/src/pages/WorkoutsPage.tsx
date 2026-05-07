@@ -52,15 +52,19 @@ export function WorkoutsPage() {
 // The handleSave function is called when the user clicks the "Save" button in the modal after adding or editing a workout.
 // It checks if there is an editId to determine whether to call the update mutation (for editing) or the add mutation (for adding a new workout).
 // After the mutation is completed, it closes the modal.
-  const handleSave = async () => {if (editId)
+  const handleSave = async () => {
+    if (form.durationMinutes <= 0) {
+      alert('Duration must be greater than 0')
+      return
+   }
+  if (editId) {
+    await updateMutation.mutateAsync({ id: editId, data: form })
+  } else
      {
-      await updateMutation.mutateAsync({ id: editId, data: form })
-    } else
-         {
       await addMutation.mutateAsync(form)
     }
-    setShowModal(false)
-  }
+  setShowModal(false)
+}
 
   // The filtered variable holds the list of workouts to be displayed based on the selected filter.
   //  If the filter is set to 'all', it includes all workouts otherwise, it filters workouts by their status (completed, planned, or missed).
