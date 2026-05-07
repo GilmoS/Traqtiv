@@ -44,7 +44,27 @@ export function ActivityPage() {
 
 // The handleAdd function is an asynchronous function that handles the submission of the new activity form.
 //  It calls the addMutation to add the new activity, then closes the modal and resets the form state to the empty form.
-  const handleAdd = async () => {await addMutation.mutateAsync(form),setShowModal(false),setForm(emptyForm)}
+ const handleAdd = async () => {
+  if (form.steps > 100000) {
+    alert('Steps cannot exceed 100,000 per day')
+    return
+    }
+  if (form.caloriesBurned > 10000) {
+    alert('Calories cannot exceed 10,000 per day')
+    return
+  }
+  if (form.activeMinutes > 1440) {
+    alert('Active minutes cannot exceed 1,440 per day (24 hours)')
+    return
+  }
+  if (form.distanceKm > 300) {
+    alert('Distance cannot exceed 300 km per day')
+    return
+  }
+  await addMutation.mutateAsync(form)
+  setShowModal(false)
+  setForm(emptyForm)
+}
 
 
   return (
@@ -130,10 +150,10 @@ export function ActivityPage() {
             <Input label="Date" type="date" value={form.date} onChange={set('date')} />
             <div 
                style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-              <Input label="Steps" type="number" value={form.steps} onChange={set('steps')} min={0} />
-              <Input label="Calories Burned" type="number" value={form.caloriesBurned} onChange={set('caloriesBurned')} min={0} />
-              <Input label="Active Minutes" type="number" value={form.activeMinutes} onChange={set('activeMinutes')} min={0} />
-              <Input label="Distance (km)" type="number" value={form.distanceKm} onChange={set('distanceKm')} min={0} step={0.1} />
+              <Input label="Steps" type="number" value={form.steps} onChange={set('steps')} min={0} max={100000} />
+              <Input label="Calories Burned" type="number" value={form.caloriesBurned} onChange={set('caloriesBurned')} min={0} max={10000} />
+              <Input label="Active Minutes" type="number" value={form.activeMinutes} onChange={set('activeMinutes')} min={0} max={1440} />
+              <Input label="Distance (km)" type="number" value={form.distanceKm} onChange={set('distanceKm')} min={0} max={300} step={0.1}  />
             </div>
             <div
                style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 8 }}>
