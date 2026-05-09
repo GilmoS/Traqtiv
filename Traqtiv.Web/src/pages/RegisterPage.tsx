@@ -35,8 +35,12 @@ export function RegisterPage() {
       const profile = await metricsService.getProfile()
       login(auth.token, profile)
       navigate('/')
-    } catch {
-      setError('Registration failed. Please try again.')
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        setError(error.response.data.message)
+      } else {
+        setError('An error occurred while creating your account. Please try again.')
+      }
     } finally {
       setLoading(false)
     }
