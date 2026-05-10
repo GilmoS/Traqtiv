@@ -27,8 +27,8 @@ const recIcons = {
 //  It will show a loading spinner while the data is being fetched, and an empty state if there are no recommendations or alerts to show.
 //  The user can switch between the "Alerts" and "Recommendations" tabs, and mark alerts as read.
 export function RecommendationsPage() {
-  const { data: recommendations = [], isLoading: rLoading } = useRecommendations() 
-  const { data: alerts = [], isLoading: aLoading } = useAlerts()
+  const { data: recommendations = [], isLoading: rLoading , isError: rError } = useRecommendations() 
+  const { data: alerts = [], isLoading: aLoading , isError: aError } = useAlerts()
   const markRead = useMarkAlertRead()
   const [tab, setTab] = useState<'alerts' | 'recommendations'>('alerts')
 
@@ -77,6 +77,17 @@ export function RecommendationsPage() {
       {/* Alerts Tab */}
       {tab === 'alerts' && (<div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {aLoading ? <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div>
+            : aError
+            ? <div style={{
+            padding: '16px 20px',
+            background: 'var(--red-dim)',
+            border: '1px solid var(--red)',
+            borderRadius: 'var(--radius-sm)',
+            color: 'var(--red)',
+            fontSize: 14,
+            }}>
+              Unable to connect to server. Please try again later.
+            </div>
             : alerts.length === 0 ? <EmptyState icon={<Bell />} message="No alerts — the system is monitoring you!" />
               : [...alerts].sort((a, b) => { if (a.isRead !== b.isRead) return a.isRead ? 1 : -1
                     return b.severity - a.severity
@@ -134,8 +145,19 @@ export function RecommendationsPage() {
       {/* Recommendations Tab */}
       {tab === 'recommendations' && (
         <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {rLoading ? <div 
-          style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div>: recommendations.length === 0 ? <EmptyState icon={<Lightbulb />} message="No recommendations yet" />
+          {rLoading ?
+           <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div>: recommendations.length === 0 ? <EmptyState icon={<Lightbulb />} message="No recommendations yet" />
+            : rError
+            ? <div style={{
+              padding: '16px 20px',
+              background: 'var(--red-dim)',
+              border: '1px solid var(--red)',
+              borderRadius: 'var(--radius-sm)',
+              color: 'var(--red)',
+              fontSize: 14,
+               }}>
+              Unable to connect to server. Please try again later.
+              </div>  
               : [...recommendations].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map(rec => (
                     <div 
                         key={rec.id} style={{
