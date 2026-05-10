@@ -7,7 +7,7 @@ import { formatDate, prepareChartData } from '../utils'
 import type { AddMetricsDto } from '../types'
 
 export function MetricsPage() {
-  const { data: metrics = [], isLoading } = useBodyMetrics()
+  const { data: metrics = [], isLoading,isError } = useBodyMetrics()
   const addMutation = useAddMetrics()
   const [showModal, setShowModal] = useState(false)
   // Form state for adding new metrics
@@ -74,6 +74,17 @@ export function MetricsPage() {
       <Card className="fade-in-3">
         <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Measurement History</h2>
         {isLoading? <div style={{ display: 'flex', justifyContent: 'center', padding: 40 }}><Spinner size={28} /></div>
+          : isError
+          ? <div style={{
+          padding: '16px 20px',
+          background: 'var(--red-dim)',
+          border: '1px solid var(--red)',
+          borderRadius: 'var(--radius-sm)',
+          color: 'var(--red)',
+          fontSize: 14,
+          }}>
+          Unable to connect to server. Please try again later.
+          </div>
           : sorted.length === 0
             ? <EmptyState icon={<Scale />} message="No measurements yet" />
             : <div 
