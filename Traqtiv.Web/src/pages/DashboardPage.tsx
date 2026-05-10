@@ -13,7 +13,7 @@ import { useAuth } from '../context/AuthContext'
 // Provides quick access to detailed views and encourages user engagement with their fitness journey
 export function DashboardPage() {
   const { user } = useAuth()
-  const { data: workouts = [], isLoading: wLoading } = useWorkouts()
+  const { data: workouts = [], isLoading: wLoading ,isError: wError} = useWorkouts()
   const { data: activities = [] } = useDailyActivity()
   const { data: alerts = [] } = useAlerts()
   const { data: weather } = useWeather()
@@ -91,6 +91,10 @@ export function DashboardPage() {
               </Link>
             </div>
             {wLoading ? <div style={{ display: 'flex', justifyContent: 'center', padding: 40 }}><Spinner /></div>
+              : wError
+              ? <p style={{ color: 'var(--red)', fontSize: 14, textAlign: 'center', padding: '30px 0' }}>
+              Unable to load workout data
+              </p>
               : chartData.length
                 ? <WorkoutChart data={chartData} />
                 : <p style={{ color: 'var(--text-muted)', fontSize: 14, textAlign: 'center', padding: '30px 0' }}>No workout data yet</p>
