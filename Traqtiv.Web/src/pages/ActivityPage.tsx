@@ -23,7 +23,7 @@ const emptyForm: AddDailyActivityDto = {
 //  It uses custom hooks to manage data fetching and mutations, and it includes a modal form for adding new activity entries.
 //  The component also calculates total steps, calories burned, active minutes, and distance covered, and it prepares data for the activity chart.
 export function ActivityPage() {
-  const { data: activities = [], isLoading } = useDailyActivity()
+  const { data: activities = [], isLoading, isError } = useDailyActivity()
   const addMutation = useAddActivity()
   const [showModal, setShowModal] = useState(false)
   const [form, setForm] = useState<AddDailyActivityDto>(emptyForm)
@@ -102,8 +102,18 @@ export function ActivityPage() {
       {/* History List */}
       <Card className="fade-in-3">
         <h2 style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>History</h2>
-        {isLoading
-          ? <div style={{ display: 'flex', justifyContent: 'center', padding: 40 }}><Spinner size={28} /></div>
+        {isLoading ? <div style={{ display: 'flex', justifyContent: 'center', padding: 40 }}><Spinner size={28} /></div>
+          : isError ? 
+          <div style={{
+        padding: '16px 20px',
+        background: 'var(--red-dim)',
+        border: '1px solid var(--red)',
+        borderRadius: 'var(--radius-sm)',
+        color: 'var(--red)',
+        fontSize: 14,
+        }}>
+        Unable to connect to server. Please try again later.
+        </div>
           : sorted.length === 0
             ? <EmptyState icon={<Footprints />} message="No activity data yet" />
             : <div 
