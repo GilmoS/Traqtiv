@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-// פרטי משתמש קיים לבדיקות
+// Test credentials for login
 const TEST_EMAIL = 'gil.moshe23@gmail.com'
 const TEST_PASSWORD = 'Gil123'
 

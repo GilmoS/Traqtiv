@@ -49,7 +49,7 @@ namespace Traqtiv.API.Services
 
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
-            user.DateOfBirth = request.DateOfBirth;
+            user.DateOfBirth = request.DateOfBirth.ToUniversalTime();
 
             await _dal.UpdateUserAsync(user);
 
