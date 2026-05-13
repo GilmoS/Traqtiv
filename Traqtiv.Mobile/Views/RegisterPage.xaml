@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             x:Class="Traqtiv.Mobile.Views.RegisterPage"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,32,24,32" Spacing="0">
+
+            <!-- Back -->
+            <HorizontalStackLayout Spacing="8" Margin="0,0,0,32">
+                <Label Text="←"
+                       FontSize="20"
+                       TextColor="{StaticResource PrimaryColor}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Back to login"
+                       FontSize="14"
+                       TextColor="{StaticResource PrimaryColor}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <!-- Title -->
+            <Label Text="Create account"
+                   Style="{StaticResource TitleLabel}"
+                   Margin="0,0,0,6"/>
+
+            <Label Text="Start your fitness journey today"
+                   Style="{StaticResource SubtitleLabel}"
+                   Margin="0,0,0,28"/>
+
+            <!-- First + Last Name -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,0,0,16">
+
+                <VerticalStackLayout Grid.Column="0" Spacing="8">
+                    <Label Text="FIRST NAME"
+                           FontSize="11"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           CharacterSpacing="1"/>
+                    <Border BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5">
+                        <Entry Placeholder="John"
+                               Text="{Binding FirstName}"
+                               Style="{StaticResource PrimaryEntry}"
+                               Margin="14,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="8">
+                    <Label Text="LAST NAME"
+                           FontSize="11"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           CharacterSpacing="1"/>
+                    <Border BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5">
+                        <Entry Placeholder="Doe"
+                               Text="{Binding LastName}"
+                               Style="{StaticResource PrimaryEntry}"
+                               Margin="14,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <!-- Email -->
+            <Label Text="EMAIL"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,16">
+                <Entry Placeholder="your@email.com"
+                       Text="{Binding Email}"
+                       Keyboard="Email"
+                       Style="{StaticResource PrimaryEntry}"
+                       Margin="14,0"/>
+            </Border>
+
+            <!-- Date of Birth -->
+            <Label Text="DATE OF BIRTH"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,16">
+                <DatePicker Date="{Binding DateOfBirth}"
+                            TextColor="{StaticResource TextPrimaryColor}"
+                            BackgroundColor="Transparent"
+                            Margin="14,0"/>
+            </Border>
+
+            <!-- Password -->
+            <Label Text="PASSWORD"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,16">
+                <Entry Placeholder="••••••••"
+                       Text="{Binding Password}"
+                       IsPassword="True"
+                       Style="{StaticResource PrimaryEntry}"
+                       Margin="14,0"/>
+            </Border>
+
+            <!-- Confirm Password -->
+            <Label Text="CONFIRM PASSWORD"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,28">
+                <Entry Placeholder="••••••••"
+                       Text="{Binding ConfirmPassword}"
+                       IsPassword="True"
+                       Style="{StaticResource PrimaryEntry}"
+                       Margin="14,0"/>
+            </Border>
+
+            <!-- Register Button -->
+            <Button Text="Create Account"
+                    Command="{Binding RegisterCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    Style="{StaticResource PrimaryButton}"/>
+
+            <!-- Loading -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"
+                               Color="{StaticResource PrimaryColor}"
+                               HorizontalOptions="Center"
+                               Margin="0,16,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

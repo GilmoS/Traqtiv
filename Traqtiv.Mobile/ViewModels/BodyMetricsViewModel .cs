@@ -7,7 +7,8 @@ using Traqtiv.Mobile.Services.Interfaces;
 
 namespace Traqtiv.Mobile.ViewModels;
 
-//This ViewModel manages the body metrics data, allowing users to view their historical metrics and add new entries. It interacts with the IBodyMetricsService to fetch and save data, and also retrieves the latest health data from the HealthService to pre-fill the input fields for convenience.
+//This ViewModel manages the body metrics data, allowing users to view their historical metrics and add new entries.
+//It interacts with the IBodyMetricsService to fetch and save data, and also retrieves the latest health data from the HealthService to pre-fill the input fields for convenience.
 //The ViewModel includes error handling and user feedback mechanisms to ensure a smooth user experience.
 
 public partial class BodyMetricsViewModel : BaseViewModel

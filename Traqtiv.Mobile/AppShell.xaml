@@ -1,14 +1,48 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Traqtiv.Mobile.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Traqtiv.Mobile"
-    Title="Traqtiv.Mobile">
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Traqtiv.Mobile.Views"
+       x:Class="Traqtiv.Mobile.AppShell"
+       BackgroundColor="#0F1923"
+       FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+	<!-- Splash -->
+	<ShellContent Route="splash"
+                  ContentTemplate="{DataTemplate views:SplashPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<!-- Auth -->
+	<ShellContent Route="login"
+                  ContentTemplate="{DataTemplate views:LoginPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="register"
+                  ContentTemplate="{DataTemplate views:RegisterPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<!-- Main -->
+	<ShellContent Route="home"
+                  ContentTemplate="{DataTemplate views:HomePage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="workouts"
+                  ContentTemplate="{DataTemplate views:WorkoutsPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="dailyactivity"
+                  ContentTemplate="{DataTemplate views:DailyActivityPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="bodymetrics"
+                  ContentTemplate="{DataTemplate views:BodyMetricsPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="recommendations"
+                  ContentTemplate="{DataTemplate views:RecommendationsPage}"
+                  Shell.NavBarIsVisible="False"/>
+
+	<ShellContent Route="profile"
+                  ContentTemplate="{DataTemplate views:ProfilePage}"
+                  Shell.NavBarIsVisible="False"/>
 
 </Shell>

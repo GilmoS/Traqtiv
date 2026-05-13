@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             x:Class="Traqtiv.Mobile.Views.HomePage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <EventTrigger.Actions>
+                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </ContentPage.Triggers>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="24,32,24,16" Spacing="0">
+
+                <!-- Header -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,24">
+                    <VerticalStackLayout Grid.Column="0" Spacing="2">
+                        <Label Text="Good morning,"
+                               FontSize="13"
+                               TextColor="{StaticResource TextSecondaryColor}"/>
+                        <Label Text="Welcome back 👋"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimaryColor}"/>
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            WidthRequest="40"
+                            HeightRequest="40">
+                        <Label Text="🔔"
+                               FontSize="18"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+
+                <!-- Stats Cards -->
+                <Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="12"
+                      RowSpacing="12"
+                      Margin="0,0,0,24">
+
+                    <!-- Calories -->
+                    <Border Grid.Row="0" Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="🔥" FontSize="20"/>
+                            <Label Text="{Binding TodayActivity.CaloriesBurned, StringFormat='{0}'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+                            <Label Text="Calories today"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Steps -->
+                    <Border Grid.Row="0" Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="👟" FontSize="20"/>
+                            <Label Text="{Binding TodayActivity.Steps, StringFormat='{0}'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+                            <Label Text="Steps today"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Active Minutes -->
+                    <Border Grid.Row="1" Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="⏱️" FontSize="20"/>
+                            <Label Text="{Binding TodayActivity.ActiveMinutes, StringFormat='{0}m'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+                            <Label Text="Active minutes"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Distance -->
+                    <Border Grid.Row="1" Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="📍" FontSize="20"/>
+                            <Label Text="{Binding TodayActivity.DistanceKm, StringFormat='{0:F1}km'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+                            <Label Text="Distance"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                </Grid>
+
+                <!-- Recent Workouts -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                    <Label Grid.Column="0"
+                           Text="Recent workouts"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimaryColor}"/>
+                    <Label Grid.Column="1"
+                           Text="See all"
+                           FontSize="13"
+                           TextColor="{StaticResource PrimaryColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding NavigateToWorkoutsCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <CollectionView ItemsSource="{Binding RecentWorkouts}"
+                                Margin="0,0,0,20">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                                    StrokeShape="RoundRectangle 12"
+                                    Stroke="{StaticResource BorderColor}"
+                                    StrokeThickness="0.5"
+                                    Padding="14,12"
+                                    Margin="0,0,0,8">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <Border Grid.Column="0"
+                                            BackgroundColor="#185FA520"
+                                            StrokeShape="RoundRectangle 10"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Margin="0,0,12,0">
+                                        <Label Text="🏋️"
+                                               FontSize="18"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                        <Label Text="{Binding Type}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource TextPrimaryColor}"/>
+                                        <Label FontSize="12"
+                                               TextColor="{StaticResource TextSecondaryColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding DurationMinutes}"/>
+                                                    <Span Text=" min · "/>
+                                                    <Span Text="{Binding CaloriesBurned}"/>
+                                                    <Span Text=" cal"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Date, StringFormat='{0:MMM dd}'}"
+                                           FontSize="11"
+                                           TextColor="{StaticResource TextHintColor}"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Active Alerts -->
+                <VerticalStackLayout IsVisible="{Binding ActiveAlerts.Count, Converter={StaticResource IntToBoolConverter}}"
+                                     Spacing="8">
+                    <Label Text="Active alerts"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimaryColor}"
+                           Margin="0,0,0,4"/>
+                    <CollectionView ItemsSource="{Binding ActiveAlerts}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="#EF9F2715"
+                                        StrokeShape="RoundRectangle 12"
+                                        Stroke="#EF9F2740"
+                                        StrokeThickness="0.5"
+                                        Padding="14,12"
+                                        Margin="0,0,0,8">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <Label Grid.Column="0"
+                                               Text="⚠️"
+                                               FontSize="20"
+                                               Margin="0,0,12,0"
+                                               VerticalOptions="Center"/>
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Message}"
+                                               FontSize="13"
+                                               TextColor="#FAC775"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <Border Grid.Row="1"
+                BackgroundColor="{StaticResource SurfaceColor}"
+                StrokeShape="RoundRectangle 0"
+                Stroke="#1A2634"
+                StrokeThickness="0.5">
+            <Grid ColumnDefinitions="*,*,*,*" Padding="0,12,0,24">
+
+                <VerticalStackLayout Grid.Column="0"
+                                     Spacing="4"
+                                     HorizontalOptions="Center">
+                    <Label Text="🏠" FontSize="22" HorizontalOptions="Center"/>
+                    <Label Text="Home"
+                           FontSize="10"
+                           TextColor="{StaticResource PrimaryColor}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1"
+                                     Spacing="4"
+                                     HorizontalOptions="Center">
+                    <Label Text="🏋️" FontSize="22" HorizontalOptions="Center"/>
+                    <Label Text="Workouts"
+                           FontSize="10"
+                           TextColor="{StaticResource TextHintColor}"
+                           HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding NavigateToWorkoutsCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="2"
+                                     Spacing="4"
+                                     HorizontalOptions="Center">
+                    <Label Text="📊" FontSize="22" HorizontalOptions="Center"/>
+                    <Label Text="Activity"
+                           FontSize="10"
+                           TextColor="{StaticResource TextHintColor}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="3"
+                                     Spacing="4"
+                                     HorizontalOptions="Center">
+                    <Label Text="👤" FontSize="22" HorizontalOptions="Center"/>
+                    <Label Text="Profile"
+                           FontSize="10"
+                           TextColor="{StaticResource TextHintColor}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

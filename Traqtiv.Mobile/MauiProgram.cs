@@ -5,6 +5,7 @@ using Traqtiv.Mobile.Views;
 
 namespace Traqtiv.Mobile;
 
+// This class is responsible for configuring and creating the MauiApp instance for the application.
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -25,6 +26,12 @@ public static class MauiProgram
             client.BaseAddress = new Uri(AppConstants.ApiBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         });
+
+        // ApiClient
+        builder.Services.AddSingleton<ApiClient>();
+
+        // Health Service
+        builder.Services.AddSingleton<HealthService>();
 
         // Services - Singleton 
         builder.Services.AddSingleton<IAuthService, AuthService>();
@@ -55,6 +62,9 @@ public static class MauiProgram
         builder.Services.AddTransient<BodyMetricsPage>();
         builder.Services.AddTransient<RecommendationsPage>();
         builder.Services.AddTransient<ProfilePage>();
+
+        //Shell
+        builder.Services.AddSingleton<AppShell>();
 
 #if DEBUG
         builder.Logging.AddDebug();
