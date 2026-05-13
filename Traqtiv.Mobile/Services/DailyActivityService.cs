@@ -3,20 +3,27 @@ using Traqtiv.Mobile.Services.Interfaces;
 
 namespace Traqtiv.Mobile.Services;
 
+
+//This service is responsible for handling daily activity related operations, such as fetching activities, getting activity summaries, and adding new activities.
+//It interacts with the API client to perform these operations and handles any exceptions that may occur during the process.
 public class DailyActivityService : IDailyActivityService
 {
     private readonly ApiClient _apiClient;
 
+    // Constructor that initializes the DailyActivityService with an instance of ApiClient.
     public DailyActivityService(ApiClient apiClient)
     {
         _apiClient = apiClient;
     }
 
+    // Initializes the service. In this case, it simply returns a completed task, but it can be extended to perform any necessary setup.
     public async Task InitializeAsync()
     {
         await Task.CompletedTask;
     }
 
+    // Fetches the list of daily activities from the API.
+    // It attaches the token for authentication and handles any exceptions that may occur, returning an empty list if an error occurs.
     public async Task<List<DailyActivityDto>> GetActivitiesAsync()
     {
         try
@@ -31,6 +38,7 @@ public class DailyActivityService : IDailyActivityService
         }
     }
 
+    // Fetches the activity summary for a given date range from the API.
     public async Task<ActivitySummaryDto?> GetActivitySummaryAsync(DateTime from, DateTime to)
     {
         try
@@ -44,6 +52,7 @@ public class DailyActivityService : IDailyActivityService
         }
     }
 
+    // Adds a new daily activity by sending the request to the API.
     public async Task<bool> AddDailyActivityAsync(AddDailyActivityDto request)
     {
         try
