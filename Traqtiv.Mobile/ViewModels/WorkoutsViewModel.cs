@@ -26,6 +26,7 @@ public partial class WorkoutsViewModel : BaseViewModel
         _workoutService = workoutService;
         _navigationService = navigationService;
         Title = "Workouts";
+        ActiveTab = "workouts";
     }
 
     // This command is executed when the view appears, triggering the loading of workouts from the service.

@@ -79,4 +79,37 @@ public partial class RecommendationsViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+    // This method allows users to mark all alerts as read.
+    [RelayCommand]
+    private async Task MarkAllAlertsAsReadAsync()
+    {
+        if (IsBusy)
+            return;
+
+        if (!await ConnectivityHelper.CheckAndAlertAsync()) 
+            return;
+
+        try
+        {
+            IsBusy = true;
+            var unreadAlerts = Alerts.Where(a => !a.IsRead).ToList(); // Get all unread alerts to mark them as read.
+            foreach (var alert in unreadAlerts)
+                await _recommendationService.MarkAlertAsReadAsync(alert.Id);
+            await LoadDataAsync();
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+
+
+
+
+
+
+
 }
+

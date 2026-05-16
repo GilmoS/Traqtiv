@@ -8,6 +8,9 @@
 
 			<!-- Converters -->
 			<helpers:IntToBoolConverter x:Key="IntToBoolConverter"/>
+			<helpers:TabColorConverter x:Key="TabColorConverter"/>
+			<helpers:TypeColorConverter x:Key="TypeColorConverter"/>
+			<helpers:StatusColorConverter x:Key="StatusColorConverter"/>
 
 
 			<!-- Colors -->

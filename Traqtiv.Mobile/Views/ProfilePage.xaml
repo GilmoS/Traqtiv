@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
+             x:Class="Traqtiv.Mobile.Views.ProfilePage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <EventTrigger.Actions>
+                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </ContentPage.Triggers>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="24,32,24,16" Spacing="0">
+
+                <!-- Avatar + Name -->
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     Spacing="8"
+                                     Margin="0,0,0,24">
+                    <Border BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 40"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="2"
+                            WidthRequest="80"
+                            HeightRequest="80"
+                            HorizontalOptions="Center">
+                        <Label Text="👤"
+                               FontSize="36"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                    <Label Text="{Binding FullName}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimaryColor}"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding Email}"
+                           FontSize="13"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Stats Summary -->
+                <Grid ColumnDefinitions="*,*,*"
+                      ColumnSpacing="10"
+                      Margin="0,0,0,28">
+                    <Border Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="12,8">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalWorkouts}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Workouts"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="12,8">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalSteps}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource SuccessColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Steps"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="12,8">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalCalories}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource OrangeColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Calories"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Personal Info -->
+                <Label Text="Personal Info"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+                <!-- First Name -->
+                <Label Text="FIRST NAME"
+                       FontSize="11"
+                       TextColor="{StaticResource TextSecondaryColor}"
+                       CharacterSpacing="1"
+                       Margin="0,0,0,8"/>
+                <Border BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 10"
+                        Stroke="{StaticResource BorderColor}"
+                        StrokeThickness="0.5"
+                        Margin="0,0,0,12">
+                    <Entry Text="{Binding FirstName}"
+                           Placeholder="John"
+                           Style="{StaticResource PrimaryEntry}"
+                           Margin="14,0"/>
+                </Border>
+
+                <!-- Last Name -->
+                <Label Text="LAST NAME"
+                       FontSize="11"
+                       TextColor="{StaticResource TextSecondaryColor}"
+                       CharacterSpacing="1"
+                       Margin="0,0,0,8"/>
+                <Border BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 10"
+                        Stroke="{StaticResource BorderColor}"
+                        StrokeThickness="0.5"
+                        Margin="0,0,0,12">
+                    <Entry Text="{Binding LastName}"
+                           Placeholder="Doe"
+                           Style="{StaticResource PrimaryEntry}"
+                           Margin="14,0"/>
+                </Border>
+
+                <!-- Date of Birth -->
+                <Label Text="DATE OF BIRTH"
+                       FontSize="11"
+                       TextColor="{StaticResource TextSecondaryColor}"
+                       CharacterSpacing="1"
+                       Margin="0,0,0,8"/>
+                <Border BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 10"
+                        Stroke="{StaticResource BorderColor}"
+                        StrokeThickness="0.5"
+                        Margin="0,0,0,24">
+                    <Grid ColumnDefinitions="Auto,*" Padding="14,0">
+                        <Label Grid.Column="0" Text="📅" FontSize="18"
+                               VerticalOptions="Center" Margin="0,0,10,0"/>
+                        <DatePicker Grid.Column="1"
+                                    Date="{Binding DateOfBirth}"
+                                    TextColor="{StaticResource TextPrimaryColor}"
+                                    BackgroundColor="Transparent"/>
+                    </Grid>
+                </Border>
+
+                <!-- Save Button -->
+                <Button Text="💾  Save Changes"
+                        Command="{Binding SaveProfileCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="0,0,0,12"/>
+
+                <!-- Logout Button -->
+                <Button Text="🚪  Logout"
+                        Command="{Binding LogoutCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        BackgroundColor="#E24B4A20"
+                        TextColor="{StaticResource DangerColor}"
+                        FontSize="16"
+                        HeightRequest="52"
+                        CornerRadius="12"
+                        FontAttributes="Bold"/>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,16,0,0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <components:BottomNavBar Grid.Row="1" BindingContext="{Binding}"/>
+
+    </Grid>
+
+</ContentPage>

@@ -50,6 +50,21 @@ public partial class AddWorkoutViewModel : BaseViewModel
         Title = "Add Workout";
     }
 
+    // This command is executed when the user selects a workout type, updating the SelectedType property based on the selected value.
+    [RelayCommand]
+    private void SelectType(string type)
+    {
+        SelectedType = Enum.Parse<WorkoutType>(type);
+    }
+
+    // This command is executed when the user selects a workout status, updating the SelectedStatus property based on the selected value.
+    [RelayCommand]
+    private void SelectStatus(string status)
+    {
+        SelectedStatus = Enum.Parse<WorkoutStatus>(status);
+    }
+
+
     // This method is called automatically when the WorkoutId property changes, indicating that the user is editing an existing workout.
     partial void OnWorkoutIdChanged(string value)
     {

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
+             x:Class="Traqtiv.Mobile.Views.AddWorkoutPage"
+             Shell.NavBarIsVisible="False">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="24,32,24,32" Spacing="0">
+
+			<!-- Header -->
+			<Grid ColumnDefinitions="Auto,*" Margin="0,0,0,28">
+				<Border Grid.Column="0"
+                        BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 10"
+                        WidthRequest="36"
+                        HeightRequest="36"
+                        Margin="0,0,12,0">
+					<Label Text="←"
+                           FontSize="18"
+                           TextColor="{StaticResource PrimaryColor}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+						<Label.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding CancelCommand}"/>
+						</Label.GestureRecognizers>
+					</Label>
+				</Border>
+				<VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+					<Label Text="{Binding Title}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimaryColor}"/>
+					<Label Text="Log your training session"
+                           FontSize="13"
+                           TextColor="{StaticResource TextSecondaryColor}"/>
+				</VerticalStackLayout>
+			</Grid>
+
+			<!-- Workout Type -->
+			<Label Text="WORKOUT TYPE"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,10"/>
+
+			<Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="8"
+                  Margin="0,0,0,20">
+
+				<!-- Strength -->
+				<Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8,12"
+                        BackgroundColor="{Binding SelectedType, 
+                            Converter={StaticResource TypeColorConverter}, 
+                            ConverterParameter=Strength}">
+					<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+						<Label Text="🏋️"
+                               FontSize="22"
+                               HorizontalOptions="Center"/>
+						<Label Text="Strength"
+                               FontSize="12"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource TextPrimaryColor}"/>
+					</VerticalStackLayout>
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding SelectTypeCommand}"
+                                              CommandParameter="Strength"/>
+					</Border.GestureRecognizers>
+				</Border>
+
+				<!-- Cardio -->
+				<Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8,12"
+                        BackgroundColor="{Binding SelectedType,
+                            Converter={StaticResource TypeColorConverter},
+                            ConverterParameter=Cardio}">
+					<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+						<Label Text="🏃"
+                               FontSize="22"
+                               HorizontalOptions="Center"/>
+						<Label Text="Cardio"
+                               FontSize="12"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource TextPrimaryColor}"/>
+					</VerticalStackLayout>
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding SelectTypeCommand}"
+                                              CommandParameter="Cardio"/>
+					</Border.GestureRecognizers>
+				</Border>
+
+				<!-- Flexibility -->
+				<Border Grid.Column="2"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8,12"
+                        BackgroundColor="{Binding SelectedType,
+                            Converter={StaticResource TypeColorConverter},
+                            ConverterParameter=Flexibility}">
+					<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+						<Label Text="🧘"
+                               FontSize="22"
+                               HorizontalOptions="Center"/>
+						<Label Text="Flexibility"
+                               FontSize="12"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource TextPrimaryColor}"/>
+					</VerticalStackLayout>
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding SelectTypeCommand}"
+                                              CommandParameter="Flexibility"/>
+					</Border.GestureRecognizers>
+				</Border>
+
+			</Grid>
+
+			<!-- Status -->
+			<Label Text="STATUS"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,10"/>
+
+			<Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="8"
+                  Margin="0,0,0,20">
+
+				<Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="10"
+                        BackgroundColor="{Binding SelectedStatus,
+                            Converter={StaticResource StatusColorConverter},
+                            ConverterParameter=Completed}">
+					<Label Text="✓ Completed"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource SuccessColor}"
+                           HorizontalOptions="Center"/>
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding SelectStatusCommand}"
+                                              CommandParameter="Completed"/>
+					</Border.GestureRecognizers>
+				</Border>
+
+				<Border Grid.Column="1"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="10"
+                        BackgroundColor="{Binding SelectedStatus,
+                            Converter={StaticResource StatusColorConverter},
+                            ConverterParameter=Planned}">
+					<Label Text="📅 Planned"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           HorizontalOptions="Center"/>
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding SelectStatusCommand}"
+                                              CommandParameter="Planned"/>
+					</Border.GestureRecognizers>
+				</Border>
+
+			</Grid>
+
+			<!-- Duration -->
+			<Label Text="DURATION (MINUTES)"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+			<Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,16">
+				<Grid ColumnDefinitions="Auto,*" Padding="14,0">
+					<Label Grid.Column="0"
+                           Text="⏱️"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Margin="0,0,10,0"/>
+					<Entry Grid.Column="1"
+                           Text="{Binding DurationMinutes}"
+                           Keyboard="Numeric"
+                           Placeholder="60"
+                           Style="{StaticResource PrimaryEntry}"/>
+				</Grid>
+			</Border>
+
+			<!-- Calories -->
+			<Label Text="CALORIES BURNED"
+                   FontSize="11"
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   CharacterSpacing="1"
+                   Margin="0,0,0,8"/>
+			<Border BackgroundColor="{StaticResource SurfaceColor}"
+                    StrokeShape="RoundRectangle 10"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="0.5"
+                    Margin="0,0,0,16">
+				<Grid ColumnDefinitions="Auto,*" Padding="14,0">
+					<Label Grid.Column="0"
+                           Text="🔥"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Margin="0,0,10,0"/>
+					<Entry Grid.Column="1"
+                           Text="{Binding CaloriesBurned}"
+                           Keyboard="Numeri

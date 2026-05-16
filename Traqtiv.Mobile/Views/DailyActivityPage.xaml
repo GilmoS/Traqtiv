@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
+             x:Class="Traqtiv.Mobile.Views.DailyActivityPage"
+             Shell.NavBarIsVisible="False">
+
+	<ContentPage.Triggers>
+		<EventTrigger Event="Appearing">
+			<EventTrigger.Actions>
+				<InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+			</EventTrigger.Actions>
+		</EventTrigger>
+	</ContentPage.Triggers>
+
+	<Grid RowDefinitions="*,Auto">
+
+		<ScrollView Grid.Row="0">
+			<VerticalStackLayout Padding="24,32,24,16" Spacing="0">
+
+				<!-- Header -->
+				<Label Text="Daily Activity"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,4"/>
+				<Label Text="{Binding TodayDate, StringFormat='Today — {0}'}"
+                    FontSize="13"
+                    TextColor="{StaticResource TextSecondaryColor}"
+                    Margin="0,0,0,20"/>
+
+				<!-- Loading -->
+				<ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,0,0,16"/>
+
+				<!-- Today Stats -->
+				<Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="12"
+                      RowSpacing="12"
+                      Margin="0,0,0,24">
+
+					<Border Grid.Row="0" Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+						<VerticalStackLayout Spacing="4">
+							<Label Text="👟" FontSize="20"/>
+							<Label Text="{Binding Steps}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Label Text="Steps"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+						</VerticalStackLayout>
+					</Border>
+
+					<Border Grid.Row="0" Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+						<VerticalStackLayout Spacing="4">
+							<Label Text="🔥" FontSize="20"/>
+							<Label Text="{Binding CaloriesBurned}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Label Text="Calories"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+						</VerticalStackLayout>
+					</Border>
+
+					<Border Grid.Row="1" Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+						<VerticalStackLayout Spacing="4">
+							<Label Text="⏱️" FontSize="20"/>
+							<Label Text="{Binding ActiveMinutes, StringFormat='{0}m'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Label Text="Active min"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+						</VerticalStackLayout>
+					</Border>
+
+					<Border Grid.Row="1" Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="16">
+						<VerticalStackLayout Spacing="4">
+							<Label Text="📍" FontSize="20"/>
+							<Label Text="{Binding DistanceKm, StringFormat='{0:F1}km'}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Label Text="Distance"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+						</VerticalStackLayout>
+					</Border>
+
+				</Grid>
+
+				<!-- Weekly Summary -->
+				<Label Text="Weekly Summary"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+				<Border BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 12"
+                        Stroke="{StaticResource BorderColor}"
+                        StrokeThickness="0.5"
+                        Padding="16"
+                        Margin="0,0,0,24">
+					<Grid ColumnDefinitions="*,*"
+                          RowDefinitions="Auto,Auto"
+                          ColumnSpacing="12"
+                          RowSpacing="12">
+
+						<VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="4">
+							<Label Text="Total Steps"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+							<Label Text="{Binding WeeklySummary.TotalSteps}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource PrimaryColor}"/>
+						</VerticalStackLayout>
+
+						<VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="4">
+							<Label Text="Total Calories"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+							<Label Text="{Binding WeeklySummary.TotalCaloriesBurned}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource OrangeColor}"/>
+						</VerticalStackLayout>
+
+						<VerticalStackLayout Grid.Row="1" Grid.Column="0" Spacing="4">
+							<Label Text="Active Minutes"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+							<Label Text="{Binding WeeklySummary.TotalActiveMinutes, StringFormat='{0}m'}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource SuccessColor}"/>
+						</VerticalStackLayout>
+
+						<VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="4">
+							<Label Text="Distance"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"/>
+							<Label Text="{Binding WeeklySummary.TotalDistanceKm, StringFormat='{0:F1}km'}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+						</VerticalStackLayout>
+
+					</Grid>
+				</Border>
+
+				<!-- Log Activity -->
+				<Label Text="Log Activity"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+				<Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="8"
+                      RowSpacing="8"
+                      Margin="0,0,0,8">
+
+					<!-- Steps Input -->
+					<VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="6">
+						<Label Text="STEPS"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+						<Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+							<Grid ColumnDefinitions="Auto,*" Padding="12,0">
+								<Label Grid.Column="0" Text="👟" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+								<Entry Grid.Column="1"
+                                       Text="{Binding Steps}"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource PrimaryEntry}"/>
+							</Grid>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Calories Input -->
+					<VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="6">
+						<Label Text="CALORIES"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+						<Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+							<Grid ColumnDefinitions="Auto,*" Padding="12,0">
+								<Label Grid.Column="0" Text="🔥" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+								<Entry Grid.Column="1"
+                                       Text="{Binding CaloriesBurned}"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource PrimaryEntry}"/>
+							</Grid>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Active Minutes Input -->
+					<VerticalStackLayout Grid.Row="1" Grid.Column="0" Spacing="6">
+						<Label Text="ACTIVE MIN"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+						<Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+							<Grid ColumnDefinitions="Auto,*" Padding="12,0">
+								<Label Grid.Column="0" Text="⏱️" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+								<Entry Grid.Column="1"
+                                       Text="{Binding ActiveMinutes}"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource PrimaryEntry}"/>
+							</Grid>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Distance Input -->
+					<VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="6">
+						<Label Text="DISTANCE KM"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+						<Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+							<Grid ColumnDefinitions="Auto,*" Padding="12,0">
+								<Label Grid.Column="0" Text="📍" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+								<Entry Grid.Column="1"
+                                       Text="{Binding DistanceKm}"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource PrimaryEntry}"/>
+							</Grid>
+						</Border>
+					</VerticalStackLayout>
+
+				</Grid>
+
+				<!-- Save Button -->
+				<Button Text="💾  Save Activity"
+                        Command="{Binding SaveActivityCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="0,8,0,0"/>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<!-- Bottom Navigation -->
+		<components:BottomNavBar Grid.Row="1" BindingContext="{Binding}"/>
+
+	</Grid>
+
+</ContentPage>

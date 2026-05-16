@@ -1,0 +1,9 @@
+﻿namespace Traqtiv.Mobile.Views.Components;
+
+public partial class BottomNavBar : ContentView
+{
+    public BottomNavBar()
+    {
+        InitializeComponent();
+    }
+}

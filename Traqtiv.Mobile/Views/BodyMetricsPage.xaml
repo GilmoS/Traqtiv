@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
+             xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
+             x:Class="Traqtiv.Mobile.Views.BodyMetricsPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <EventTrigger.Actions>
+                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </ContentPage.Triggers>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="24,32,24,16" Spacing="0">
+
+                <!-- Header -->
+                <Label Text="Body Metrics"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,4"/>
+                <Label Text="Track your physical measurements"
+                       FontSize="13"
+                       TextColor="{StaticResource TextSecondaryColor}"
+                       Margin="0,0,0,20"/>
+
+                <!-- Loading -->
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,0,0,16"/>
+
+                <!-- Latest Metrics -->
+                <Grid ColumnDefinitions="*,*,*"
+                      ColumnSpacing="10"
+                      Margin="0,0,0,24">
+
+                    <Border Grid.Column="0"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="14,10">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="⚖️" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Weight, StringFormat='{0:F1}'}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Weight kg"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="14,10">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="❤️" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding RestingHeartRate}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Resting HR"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            BackgroundColor="{StaticResource SurfaceColor}"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="{StaticResource BorderColor}"
+                            StrokeThickness="0.5"
+                            Padding="14,10">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="📊" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding BMI, StringFormat='{0:F1}'}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimaryColor}"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="BMI"
+                                   FontSize="11"
+                                   TextColor="{StaticResource TextSecondaryColor}"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                </Grid>
+
+                <!-- History -->
+                <Label Text="History"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+                <CollectionView ItemsSource="{Binding MetricsList}"
+                                Margin="0,0,0,24">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:BodyMetricsDto">
+                            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                                    StrokeShape="RoundRectangle 12"
+                                    Stroke="{StaticResource BorderColor}"
+                                    StrokeThickness="0.5"
+                                    Padding="14,12"
+                                    Margin="0,0,0,8">
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="{Binding MeasuredAt, StringFormat='{0:MMMM dd, yyyy}'}"
+                                           FontSize="13"
+                                           TextColor="{StaticResource TextSecondaryColor}"/>
+                                    <HorizontalStackLayout Spacing="16">
+                                        <Label FontSize="14"
+                                               TextColor="{StaticResource TextPrimaryColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="⚖️ "/>
+                                                    <Span Text="{Binding Weight, StringFormat='{0:F1}'}"/>
+                                                    <Span Text="kg"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="14"
+                                               TextColor="{StaticResource TextPrimaryColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="❤️ "/>
+                                                    <Span Text="{Binding RestingHeartRate}"/>
+                                                    <Span Text="bpm"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="14"
+                                               TextColor="{StaticResource TextPrimaryColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="📊 "/>
+                                                    <Span Text="{Binding BMI, StringFormat='{0:F1}'}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Add Measurement -->
+                <Label Text="Add Measurement"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+                <!-- Weight -->
+                <Label Text="WEIGHT (KG)"
+                       FontSize="11"
+                       TextColor="{StaticResource TextSecondaryColor}"
+                       CharacterSpacing="1"
+                       Margin="0,0,0,8"/>
+                <Border BackgroundColor="{StaticResource SurfaceColor}"
+                        StrokeShape="RoundRectangle 10"
+                        Stroke="{StaticResource BorderColor}"
+                        StrokeThickness="0.5"
+                        Margin="0,0,0,12">
+                    <Grid ColumnDefinitions="Auto,*" Padding="14,0">
+                        <Label Grid.Column="0" Text="⚖️" FontSize="18"
+                               VerticalOptions="Center" Margin="0,0,10,0"/>
+                        <Entry Grid.Column="1"
+                               Text="{Binding Weight}"
+                               Keyboard="Numeric"
+                               Placeholder="75.5"
+                               Style="{StaticResource PrimaryEntry}"/>
+                    </Grid>
+                </Border>
+
+                <!-- HR + BMI -->
+                <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="8"
+                      Margin="0,0,0,16">
+
+                    <VerticalStackLayout Grid.Column="0" Spacing="8">
+                        <Label Text="RESTING HR"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+                        <Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+                            <Grid ColumnDefinitions="Auto,*" Padding="12,0">
+                                <Label Grid.Column="0" Text="❤️" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+                                <Entry Grid.Column="1"
+                                       Text="{Binding RestingHeartRate}"
+                                       Keyboard="Numeric"
+                                       Placeholder="62"
+                                       Style="{StaticResource PrimaryEntry}"/>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="8">
+                        <Label Text="BMI"
+                               FontSize="11"
+                               TextColor="{StaticResource TextSecondaryColor}"
+                               CharacterSpacing="1"/>
+                        <Border BackgroundColor="{StaticResource SurfaceColor}"
+                                StrokeShape="RoundRectangle 10"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="0.5">
+                            <Grid ColumnDefinitions="Auto,*" Padding="12,0">
+                                <Label Grid.Column="0" Text="📊" FontSize="16"
+                                       VerticalOptions="Center" Margin="0,0,8,0"/>
+                                <Entry Grid.Column="1"
+                                       Text="{Binding BMI}"
+                                       Keyboard="Numeric"
+                                       Placeholder="22.4"
+                                       Style="{StaticResource PrimaryEntry}"/>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                </Grid>
+
+                <!-- Save Button -->
+                <Button Text="💾  Save Measurement"
+                        Command="{Binding SaveMetricsCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{StaticResource PrimaryButton}"/>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,16,0,0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <components:BottomNavBar Grid.Row="1" BindingContext="{Binding}"/>
+
+    </Grid>
+
+</ContentPage>

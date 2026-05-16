@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
+             xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
+             x:Class="Traqtiv.Mobile.Views.RecommendationsPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <EventTrigger.Actions>
+                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </ContentPage.Triggers>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="24,32,24,16" Spacing="0">
+
+                <!-- Header -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+                    <VerticalStackLayout Grid.Column="0" Spacing="4">
+                        <Label Text="Recommendations"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimaryColor}"/>
+                        <Label Text="Personalized insights for you"
+                               FontSize="13"
+                               TextColor="{StaticResource TextSecondaryColor}"/>
+                    </VerticalStackLayout>
+
+                    <!-- Mark All as Read -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="#378ADD20"
+                            StrokeShape="RoundRectangle 10"
+                            Stroke="#378ADD40"
+                            StrokeThickness="0.5"
+                            Padding="12,6">
+                        <Label Text="✓ Mark all read"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding MarkAllAlertsAsReadCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Border>
+                </Grid>
+
+                <!-- Loading -->
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource PrimaryColor}"
+                                   HorizontalOptions="Center"
+                                   Margin="0,0,0,16"/>
+
+                <!-- Active Alerts -->
+                <Label Text="⚠️ Active Alerts"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+                <CollectionView ItemsSource="{Binding Alerts}"
+                                Margin="0,0,0,24">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:AlertDto">
+                            <Border StrokeShape="RoundRectangle 12"
+                                    StrokeThickness="0.5"
+                                    Padding="14,14"
+                                    Margin="0,0,0,8"
+                                    BackgroundColor="#E24B4A15"
+                                    Stroke="#E24B4A40">
+                                <VerticalStackLayout Spacing="8">
+
+                                    <!-- Severity + Time -->
+                                    <Grid ColumnDefinitions="Auto,*,Auto">
+                                        <Border Grid.Column="0"
+                                                StrokeShape="RoundRectangle 10"
+                                                BackgroundColor="#E24B4A30"
+                                                Padding="10,2">
+                                            <Label Text="{Binding Severity, StringFormat='🔴 {0}'}"
+                                                   FontSize="12"
+                                                   TextColor="{StaticResource DangerColor}"/>
+                                        </Border>
+                                        <Label Grid.Column="2"
+                                               Text="{Binding CreatedAt, StringFormat='{0:HH:mm}'}"
+                                               FontSize="11"
+                                               TextColor="{StaticResource TextHintColor}"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+
+                                    <!-- Message -->
+                                    <Label Text="{Binding Message}"
+                                           FontSize="14"
+                                           TextColor="{StaticResource TextPrimaryColor}"/>
+
+                                    <!-- Mark as Read Button -->
+                                    <Button Text="✓ Mark as Read"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecommendationsViewModel}}, 
+                                                     Path=MarkAlertAsReadCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="{StaticResource PrimaryColor}"
+                                            TextColor="{StaticResource TextPrimaryColor}"
+                                            FontSize="13"
+                                            FontAttributes="Bold"
+                                            HeightRequest="36"
+                                            CornerRadius="8"/>
+
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Recommendations -->
+                <Label Text="💡 Recommendations"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimaryColor}"
+                       Margin="0,0,0,12"/>
+
+                <CollectionView ItemsSource="{Binding Recommendations}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecommendationDto">
+                            <Border BackgroundColor="{StaticResource SurfaceColor}"
+                                    StrokeShape="RoundRectangle 12"
+                                    Stroke="{StaticResource BorderColor}"
+                                    StrokeThickness="0.5"
+                                    Padding="14,14"
+                                    Margin="0,0,0,8">
+                                <VerticalStackLayout Spacing="8">
+
+                                    <!-- Type + Time -->
+                                    <Grid ColumnDefinitions="Auto,*,Auto">
+                                        <Border Grid.Column="0"
+                                                StrokeShape="RoundRectangle 10"
+                                                BackgroundColor="#378ADD20"
+                                                Padding="10,2">
+                                            <Label Text="{Binding Type}"
+                                                   FontSize="12"
+                                                   TextColor="{StaticResource PrimaryColor}"/>
+                                        </Border>
+                                        <Label Grid.Column="2"
+                                               Text="{Binding CreatedAt, StringFormat='{0:HH:mm}'}"
+                                               FontSize="11"
+                                               TextColor="{StaticResource TextHintColor}"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+
+                                    <!-- Message -->
+                                    <Label Text="{Binding Message}"
+                                           FontSize="14"
+                                           TextColor="{StaticResource TextPrimaryColor}"/>
+
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation -->
+        <components:BottomNavBar Grid.Row="1" BindingContext="{Binding}"/>
+
+    </Grid>
+
+</ContentPage>

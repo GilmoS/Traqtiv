@@ -25,6 +25,17 @@ public partial class ProfileViewModel : BaseViewModel
     [ObservableProperty]
     private DateTime _dateOfBirth;
 
+    [ObservableProperty]
+    private int _totalWorkouts;
+
+    [ObservableProperty]
+    private int _totalSteps;
+
+    [ObservableProperty]
+    private int _totalCalories;
+
+    public string FullName => $"{FirstName} {LastName}";// A read-only property that combines the first name and last name to display the user's full name.
+
 
     // Constructor that initializes the authentication and navigation services, and sets the title of the ViewModel.
     public ProfileViewModel(IAuthService authService,INavigationService navigationService)
@@ -58,4 +69,31 @@ public partial class ProfileViewModel : BaseViewModel
             IsBusy = false;
         }
     }
+
+
+    [RelayCommand]
+    private async Task LoadDataAsync()
+    {
+        //ToDO : Implement actual data loading from the service. For now, we will use mock data to demonstrate the functionality.
+        ActiveTab = "profile";
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task SaveProfileAsync()
+    {
+        await AlertHelper.ShowSuccessAsync("Profile updated successfully!");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
