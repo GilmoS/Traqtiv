@@ -29,7 +29,7 @@ public class WorkoutService : IWorkoutService
         try
         {
             await _apiClient.AttachTokenAsync();
-            var result = await _apiClient.Client.WorkoutsAllAsync();
+            var result = await _apiClient.Client.WorkoutAllAsync();
             return result?.ToList() ?? new List<WorkoutDto>(); // Return the list of workouts if the result is not null
         }
         catch (Exception)
@@ -44,7 +44,8 @@ public class WorkoutService : IWorkoutService
         try
         {
             await _apiClient.AttachTokenAsync();
-            return await _apiClient.Client.WorkoutsGETAsync(id);
+            return await _apiClient.Client.WorkoutGETAsync(id);
+
         }
         catch (Exception)
         {
@@ -59,7 +60,7 @@ public class WorkoutService : IWorkoutService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.WorkoutsPOSTAsync(request);
+            await _apiClient.Client.WorkoutPOSTAsync(request);
             return true;
         }
         catch (Exception)
@@ -75,7 +76,7 @@ public class WorkoutService : IWorkoutService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.WorkoutsPUTAsync(id, request);
+            await _apiClient.Client.WorkoutPUTAsync(id, request);
             return true;
         }
         catch (Exception)
@@ -92,7 +93,7 @@ public class WorkoutService : IWorkoutService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.WorkoutsDELETEAsync(id);
+            await _apiClient.Client.WorkoutDELETEAsync(id);
             return true;
         }
         catch (Exception)

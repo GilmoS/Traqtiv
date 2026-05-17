@@ -1,4 +1,6 @@
-﻿namespace Traqtiv.Mobile.Services.Interfaces;
+﻿using Traqtiv.Mobile.Models;
+
+namespace Traqtiv.Mobile.Services.Interfaces;
 
 // Interface for managing daily activities, including retrieval and addition of activities and summaries.
 public interface IDailyActivityService : IService

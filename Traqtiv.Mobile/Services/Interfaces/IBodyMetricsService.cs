@@ -1,4 +1,6 @@
-﻿namespace Traqtiv.Mobile.Services.Interfaces;
+﻿using Traqtiv.Mobile.Models;
+
+namespace Traqtiv.Mobile.Services.Interfaces;
 
 // Interface for body metrics services, providing methods to retrieve and add body metrics data.
 public interface IBodyMetricsService : IService

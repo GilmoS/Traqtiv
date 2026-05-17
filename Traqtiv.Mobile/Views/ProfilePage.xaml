@@ -6,13 +6,7 @@
              x:Class="Traqtiv.Mobile.Views.ProfilePage"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.Triggers>
-        <EventTrigger Event="Appearing">
-            <EventTrigger.Actions>
-                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </ContentPage.Triggers>
+    
 
     <Grid RowDefinitions="*,Auto">
 

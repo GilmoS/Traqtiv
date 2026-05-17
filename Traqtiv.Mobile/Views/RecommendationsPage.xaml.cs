@@ -9,4 +9,12 @@ public partial class RecommendationsPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+
+    // This method is called when the page appears.
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is RecommendationsViewModel vm)
+            await vm.LoadDataCommand.ExecuteAsync(null);
+    }
 }

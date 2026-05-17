@@ -67,4 +67,3 @@ public partial class LoginViewModel : BaseViewModel
         await _navigationService.NavigateToAsync(AppConstants.Routes.Register);
     }
 }
-}

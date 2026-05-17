@@ -7,13 +7,7 @@
              x:Class="Traqtiv.Mobile.Views.RecommendationsPage"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.Triggers>
-        <EventTrigger Event="Appearing">
-            <EventTrigger.Actions>
-                <InvokeCommandAction Command="{Binding LoadDataCommand}"/>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </ContentPage.Triggers>
+   
 
     <Grid RowDefinitions="*,Auto">
 

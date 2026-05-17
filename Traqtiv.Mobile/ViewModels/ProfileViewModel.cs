@@ -70,7 +70,7 @@ public partial class ProfileViewModel : BaseViewModel
         }
     }
 
-
+    // This method is a placeholder for loading the user's profile data. It sets the active tab to "profile" and simulates an asynchronous operation.
     [RelayCommand]
     private async Task LoadDataAsync()
     {
@@ -79,6 +79,7 @@ public partial class ProfileViewModel : BaseViewModel
         await Task.CompletedTask;
     }
 
+    // This method is a placeholder for saving the user's profile data. It simulates an asynchronous operation and shows a success message when the profile is updated.
     [RelayCommand]
     private async Task SaveProfileAsync()
     {

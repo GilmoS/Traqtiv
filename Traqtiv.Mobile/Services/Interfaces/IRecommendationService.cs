@@ -1,4 +1,6 @@
-﻿namespace Traqtiv.Mobile.Services.Interfaces;
+﻿using Traqtiv.Mobile.Models;
+
+namespace Traqtiv.Mobile.Services.Interfaces;
 
 // Interface for recommendation services, providing methods to retrieve recommendations and alerts, and to mark alerts as read.
 public interface IRecommendationService : IService

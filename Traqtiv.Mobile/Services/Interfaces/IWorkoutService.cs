@@ -1,4 +1,7 @@
-﻿namespace Traqtiv.Mobile.Services.Interfaces;
+﻿using Traqtiv.Mobile.Models;
+
+namespace Traqtiv.Mobile.Services.Interfaces;
+
 
 // Interface for workout-related services, providing methods to manage workouts, including retrieval, addition, updating, and deletion.
 

@@ -29,7 +29,7 @@ public class DailyActivityService : IDailyActivityService
         try
         {
             await _apiClient.AttachTokenAsync();
-            var result = await _apiClient.Client.ActivitiesAllAsync();
+            var result = await _apiClient.Client.DailyActivityAllAsync();
             return result?.ToList() ?? new List<DailyActivityDto>();
         }
         catch (Exception)
@@ -44,7 +44,7 @@ public class DailyActivityService : IDailyActivityService
         try
         {
             await _apiClient.AttachTokenAsync();
-            return await _apiClient.Client.SummaryAsync(from, to);
+            return await _apiClient.Client.SummaryAsync(new DateTimeOffset(from),new DateTimeOffset(to));
         }
         catch (Exception)
         {
@@ -58,7 +58,7 @@ public class DailyActivityService : IDailyActivityService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.ActivitiesPOSTAsync(request);
+            await _apiClient.Client.DailyActivityAsync(request);
             return true;
         }
         catch (Exception)

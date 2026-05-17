@@ -66,12 +66,6 @@ public partial class HomeViewModel : BaseViewModel
         }
     }
 
-    // This command navigates the user to the Workouts view when executed.
-    [RelayCommand]
-    private async Task NavigateToWorkoutsAsync()
-    {
-        await _navigationService.NavigateToAsync(AppConstants.Routes.Workouts);
-    }
 
 
     // This command navigates the user to the Recommendations view when executed.

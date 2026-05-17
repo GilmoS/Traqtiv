@@ -7,13 +7,6 @@
              x:Class="Traqtiv.Mobile.Views.WorkoutsPage"
              Shell.NavBarIsVisible="False">
 
-	<ContentPage.Triggers>
-		<EventTrigger Event="Appearing">
-			<EventTrigger.Actions>
-				<InvokeCommandAction Command="{Binding LoadWorkoutsCommand}"/>
-			</EventTrigger.Actions>
-		</EventTrigger>
-	</ContentPage.Triggers>
 
 	<Grid RowDefinitions="*,Auto">
 

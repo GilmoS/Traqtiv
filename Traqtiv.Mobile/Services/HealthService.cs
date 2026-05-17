@@ -70,7 +70,7 @@ public class HealthService
             {
                 Weight = 0,
                 RestingHeartRate = 0,
-                BMI = 0
+                Bmi = 0
             };
 #else
             return null;

@@ -43,7 +43,7 @@ public class BodyMetricsService : IBodyMetricsService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.MetricsPOSTAsync(request);
+            await _apiClient.Client.MetricsAsync(request);
             return true;
         }
         catch (Exception)

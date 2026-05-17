@@ -90,7 +90,7 @@ public partial class AddWorkoutViewModel : BaseViewModel
                 DurationMinutes = workout.DurationMinutes;
                 SelectedStatus = workout.Status;
                 CaloriesBurned = workout.CaloriesBurned;
-                Date = workout.Date;
+                Date = workout.Date.DateTime;
                 Notes = workout.Notes;
             }
         }

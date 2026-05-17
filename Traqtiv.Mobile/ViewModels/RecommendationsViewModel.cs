@@ -30,6 +30,7 @@ public partial class RecommendationsViewModel : BaseViewModel
 
     // This method loads the recommendations and alerts data from the service.
     // It checks for connectivity before making the API calls and updates the Recommendations and Alerts properties with the retrieved data.
+    [RelayCommand]
     private async Task LoadDataAsync()
     {
         if (IsBusy)

@@ -1,4 +1,6 @@
-﻿namespace Traqtiv.Mobile;
+﻿using Traqtiv.Mobile.Helpers;
+
+namespace Traqtiv.Mobile;
 
 public partial class AppShell : Shell
 {

@@ -60,7 +60,7 @@ public partial class BodyMetricsViewModel : BaseViewModel
             {
                 Weight = healthData.Weight;
                 RestingHeartRate = healthData.RestingHeartRate;
-                BMI = healthData.BMI;
+                Bmi = healthData.Bmi;
             }
         }
         finally
@@ -97,7 +97,7 @@ public partial class BodyMetricsViewModel : BaseViewModel
             {
                 Weight = Weight,
                 RestingHeartRate = RestingHeartRate,
-                BMI = BMI
+                Bmi = Bmi
             };
 
             var success = await _metricsService.AddMetricsAsync(request); // Call the service to save the new metrics data and store the result in a variable to determine if the operation was successful.

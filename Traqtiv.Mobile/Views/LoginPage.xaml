@@ -5,9 +5,7 @@
              x:Class="Traqtiv.Mobile.Views.LoginPage"
              Shell.NavBarIsVisible="False">
 
-	<ContentPage.BindingContext>
-		<vm:LoginViewModel/>
-	</ContentPage.BindingContext>
+	
 
 	<ScrollView>
 		<VerticalStackLayout Padding="24,48,24,32" Spacing="0">

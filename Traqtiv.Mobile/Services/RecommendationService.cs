@@ -30,7 +30,7 @@ public class RecommendationService : IRecommendationService
         try
         {
             await _apiClient.AttachTokenAsync();
-            var result = await _apiClient.Client.RecommendationsAllAsync();
+            var result = await _apiClient.Client.RecommendationAsync();
             return result?.ToList() ?? new List<RecommendationDto>();
         }
         catch (Exception)
@@ -63,7 +63,8 @@ public class RecommendationService : IRecommendationService
         try
         {
             await _apiClient.AttachTokenAsync();
-            await _apiClient.Client.AlertsAsync(id);
+            await _apiClient.Client.ReadAsync(id);
+            ;
             return true;
         }
         catch (Exception)
