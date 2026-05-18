@@ -10,82 +10,67 @@
 		<Grid ColumnDefinitions="*,*,*,*" Padding="0,12,0,24">
 
 			<!-- Home -->
-			<VerticalStackLayout Grid.Column="0"
-                                 Spacing="4"
-                                 HorizontalOptions="Center">
-				<Label Text="🏠"
-                       FontSize="22"
-                       HorizontalOptions="Center"/>
-				<Label Text="Home"
-                       FontSize="10"
-                       HorizontalOptions="Center"
-                       TextColor="{Binding ActiveTab, 
-                           Converter={StaticResource TabColorConverter}, 
-                           ConverterParameter=home}">
-					<Label.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding NavigateHomeCommand}"/>
-					</Label.GestureRecognizers>
-				</Label>
-			</VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="0"
+                     Spacing="4"
+                     HorizontalOptions="Center">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateHomeCommand}"/>
+                </VerticalStackLayout.GestureRecognizers>
+                <Label Text="🏠" FontSize="22" HorizontalOptions="Center"/>
+                <Label Text="Home" FontSize="10"
+           TextColor="{Binding ActiveTab,
+               Converter={StaticResource TabColorConverter},
+               ConverterParameter=home}"
+           HorizontalOptions="Center"/>
+            </VerticalStackLayout>
 
-			<!-- Workouts -->
-			<VerticalStackLayout Grid.Column="1"
-                                 Spacing="4"
-                                 HorizontalOptions="Center">
-				<Label Text="🏋️"
-                       FontSize="22"
-                       HorizontalOptions="Center"/>
-				<Label Text="Workouts"
-                       FontSize="10"
-                       HorizontalOptions="Center"
-                       TextColor="{Binding ActiveTab,
-                           Converter={StaticResource TabColorConverter},
-                           ConverterParameter=workouts}">
-					<Label.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding NavigateToWorkoutsCommand}"/>
-					</Label.GestureRecognizers>
-				</Label>
-			</VerticalStackLayout>
+            <!-- Workouts -->
+            <VerticalStackLayout Grid.Column="1"
+                     Spacing="4"
+                     HorizontalOptions="Center">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToWorkoutsCommand}"/>
+                </VerticalStackLayout.GestureRecognizers>
+                <Label Text="🏋️" FontSize="22" HorizontalOptions="Center"/>
+                <Label Text="Workouts" FontSize="10"
+           TextColor="{Binding ActiveTab,
+               Converter={StaticResource TabColorConverter},
+               ConverterParameter=workouts}"
+           HorizontalOptions="Center"/>
+            </VerticalStackLayout>
 
-			<!-- Activity -->
-			<VerticalStackLayout Grid.Column="2"
-                                 Spacing="4"
-                                 HorizontalOptions="Center">
-				<Label Text="📊"
-                       FontSize="22"
-                       HorizontalOptions="Center"/>
-				<Label Text="Activity"
-                       FontSize="10"
-                       HorizontalOptions="Center"
-                       TextColor="{Binding ActiveTab,
-                           Converter={StaticResource TabColorConverter},
-                           ConverterParameter=activity}">
-					<Label.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding NavigateToDailyActivityCommand}"/>
-					</Label.GestureRecognizers>
-				</Label>
-			</VerticalStackLayout>
 
-			<!-- Profile -->
-			<VerticalStackLayout Grid.Column="3"
-                                 Spacing="4"
-                                 HorizontalOptions="Center">
-				<Label Text="👤"
-                       FontSize="22"
-                       HorizontalOptions="Center"/>
-				<Label Text="Profile"
-                       FontSize="10"
-                       HorizontalOptions="Center"
-                       TextColor="{Binding ActiveTab,
-                           Converter={StaticResource TabColorConverter},
-                           ConverterParameter=profile}">
-					<Label.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
-					</Label.GestureRecognizers>
-				</Label>
-			</VerticalStackLayout>
+            <!-- Activity -->
+            <VerticalStackLayout Grid.Column="2"
+                     Spacing="4"
+                     HorizontalOptions="Center">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDailyActivityCommand}"/>
+                </VerticalStackLayout.GestureRecognizers>
+                <Label Text="📊" FontSize="22" HorizontalOptions="Center"/>
+                <Label Text="Activity" FontSize="10"
+           TextColor="{Binding ActiveTab,
+               Converter={StaticResource TabColorConverter},
+               ConverterParameter=activity}"
+           HorizontalOptions="Center"/>
+            </VerticalStackLayout>
 
-		</Grid>
+            <!-- Profile -->
+            <VerticalStackLayout Grid.Column="3"
+                     Spacing="4"
+                     HorizontalOptions="Center">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                </VerticalStackLayout.GestureRecognizers>
+                <Label Text="👤" FontSize="22" HorizontalOptions="Center"/>
+                <Label Text="Profile" FontSize="10"
+           TextColor="{Binding ActiveTab,
+               Converter={StaticResource TabColorConverter},
+               ConverterParameter=profile}"
+           HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+        </Grid>
 	</Border>
 
 </ContentView>

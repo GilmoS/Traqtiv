@@ -83,8 +83,9 @@ public class AuthService : IAuthService
 
             return false;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            await AlertHelper.ShowErrorAsync($"Error: {ex.Message}\n\nInner: {ex.InnerException?.Message}");//debugging purposes,To-be removed
             return false;
         }
     }
