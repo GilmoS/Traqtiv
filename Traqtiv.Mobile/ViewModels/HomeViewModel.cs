@@ -25,6 +25,8 @@ public partial class HomeViewModel : BaseViewModel
     private List<AlertDto> _activeAlerts = new();
 
 
+
+
     // Initializes a new instance of the HomeViewModel class, injecting the necessary services for workouts, daily activity, recommendations, and navigation.
     public HomeViewModel(IWorkoutService workoutService,IDailyActivityService activityService,IRecommendationService recommendationService,INavigationService navigationService)
     {
@@ -33,6 +35,7 @@ public partial class HomeViewModel : BaseViewModel
         _recommendationService = recommendationService;
         _navigationService = navigationService;
         Title = "Home";
+        ActiveTab = "home";
     }
 
     // This command loads the data for the Home view, including recent workouts, today's activity, and active alerts.
@@ -40,8 +43,12 @@ public partial class HomeViewModel : BaseViewModel
     [RelayCommand]
     private async Task LoadDataAsync()
     {
-        if (IsBusy) return;
-        if (!await ConnectivityHelper.CheckAndAlertAsync()) return;
+        if (IsBusy)
+            return;
+
+        if (!await ConnectivityHelper.CheckAndAlertAsync()) 
+            return;
+
         // The method uses Task.WhenAll to load workouts, activities, and alerts concurrently, improving performance.
         // It then processes the results to update the RecentWorkouts, TodayActivity, and ActiveAlerts properties.
         try

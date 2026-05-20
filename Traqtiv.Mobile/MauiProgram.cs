@@ -42,6 +42,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IBodyMetricsService, BodyMetricsService>();
         builder.Services.AddSingleton<IRecommendationService, RecommendationService>();
         builder.Services.AddSingleton<INavigationService, NavigationService>();
+        builder.Services.AddSingleton<IUserService, UserService>();
 
         // ViewModels - Transient 
         builder.Services.AddTransient<LoginViewModel>();

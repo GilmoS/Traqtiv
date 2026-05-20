@@ -175,7 +175,7 @@
                 <Button Text="🚪  Logout"
                         Command="{Binding LogoutCommand}"
                         IsEnabled="{Binding IsNotBusy}"
-                        BackgroundColor="#E24B4A20"
+                        BackgroundColor="#2E1515"
                         TextColor="{StaticResource DangerColor}"
                         FontSize="16"
                         HeightRequest="52"

@@ -52,7 +52,7 @@
                             Padding="16">
                         <VerticalStackLayout Spacing="4">
                             <Label Text="🔥" FontSize="20"/>
-                            <Label Text="{Binding TodayActivity.CaloriesBurned, StringFormat='{0}'}"
+                            <Label Text="{Binding TodayActivity.CaloriesBurned, StringFormat='{0}',FallbackValue='0'}"
                                    FontSize="24"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"/>
@@ -71,7 +71,7 @@
                             Padding="16">
                         <VerticalStackLayout Spacing="4">
                             <Label Text="👟" FontSize="20"/>
-                            <Label Text="{Binding TodayActivity.Steps, StringFormat='{0}'}"
+                            <Label Text="{Binding TodayActivity.Steps, StringFormat='{0}',FallbackValue='0'}"
                                    FontSize="24"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"/>
@@ -90,7 +90,7 @@
                             Padding="16">
                         <VerticalStackLayout Spacing="4">
                             <Label Text="⏱️" FontSize="20"/>
-                            <Label Text="{Binding TodayActivity.ActiveMinutes, StringFormat='{0}m'}"
+                            <Label Text="{Binding TodayActivity.ActiveMinutes, StringFormat='{0}m',FallbackValue='0m'}"
                                    FontSize="24"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"/>
@@ -109,7 +109,7 @@
                             Padding="16">
                         <VerticalStackLayout Spacing="4">
                             <Label Text="📍" FontSize="20"/>
-                            <Label Text="{Binding TodayActivity.DistanceKm, StringFormat='{0:F1}km'}"
+                            <Label Text="{Binding TodayActivity.DistanceKm, StringFormat='{0:F1}km',FallbackValue='0.0km'}"
                                    FontSize="24"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"/>
