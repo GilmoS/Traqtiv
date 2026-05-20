@@ -90,7 +90,7 @@
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"
                                    HorizontalOptions="Center"/>
-                            <Label Text="Bmi"
+                            <Label Text="BMI"
                                    FontSize="11"
                                    TextColor="{StaticResource TextSecondaryColor}"
                                    HorizontalOptions="Center"/>
@@ -213,7 +213,7 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Column="1" Spacing="8">
-                        <Label Text="Bmi"
+                        <Label Text="BMI"
                                FontSize="11"
                                TextColor="{StaticResource TextSecondaryColor}"
                                CharacterSpacing="1"/>

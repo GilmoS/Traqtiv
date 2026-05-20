@@ -132,7 +132,7 @@
 							<Label Text="Total Steps"
                                    FontSize="11"
                                    TextColor="{StaticResource TextSecondaryColor}"/>
-							<Label Text="{Binding WeeklySummary.TotalSteps}"
+							<Label Text="{Binding WeeklySummary.TotalSteps,FallbackValue=0}"
                                    FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource PrimaryColor}"/>
@@ -142,7 +142,7 @@
 							<Label Text="Total Calories"
                                    FontSize="11"
                                    TextColor="{StaticResource TextSecondaryColor}"/>
-							<Label Text="{Binding WeeklySummary.TotalCaloriesBurned}"
+							<Label Text="{Binding WeeklySummary.TotalCaloriesBurned,FallbackValue=0}"
                                    FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource OrangeColor}"/>
@@ -152,7 +152,7 @@
 							<Label Text="Active Minutes"
                                    FontSize="11"
                                    TextColor="{StaticResource TextSecondaryColor}"/>
-							<Label Text="{Binding WeeklySummary.TotalActiveMinutes, StringFormat='{0}m'}"
+							<Label Text="{Binding WeeklySummary.TotalActiveMinutes, StringFormat='{0}m', FallbackValue=0m}"
                                    FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource SuccessColor}"/>
@@ -162,7 +162,7 @@
 							<Label Text="Distance"
                                    FontSize="11"
                                    TextColor="{StaticResource TextSecondaryColor}"/>
-							<Label Text="{Binding WeeklySummary.TotalDistanceKm, StringFormat='{0:F1}km'}"
+							<Label Text="{Binding WeeklySummary.TotalDistanceKm, StringFormat='{0:F1}km', FallbackValue=0.0km}"
                                    FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource TextPrimaryColor}"/>

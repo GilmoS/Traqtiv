@@ -54,9 +54,18 @@ public partial class BodyMetricsViewModel : BaseViewModel
             IsBusy = true;
             MetricsList = await _metricsService.GetMetricsAsync();
 
-            
+
+            var latest = MetricsList.OrderByDescending(m => m.MeasuredAt).FirstOrDefault();
+
+            if (latest != null)
+            {
+                Weight = latest.Weight;
+                RestingHeartRate = latest.RestingHeartRate;
+                Bmi = latest.Bmi;
+            }
+            // get data from the divice's health service.
             var healthData = await _healthService.GetLatestMetricsAsync();
-            if (healthData != null)
+            if (healthData != null && latest == null)
             {
                 Weight = healthData.Weight;
                 RestingHeartRate = healthData.RestingHeartRate;
