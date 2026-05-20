@@ -127,14 +127,15 @@ public partial class ProfileViewModel : BaseViewModel
 
     
 
-    // This method is a placeholder for saving the user's profile data. It simulates an asynchronous operation and shows a success message when the profile is updated.
     [RelayCommand]
     private async Task SaveProfileAsync()
     {
-        if (IsBusy) return;
+        if (IsBusy)
+            return;
 
         var confirmed = await AlertHelper.ShowConfirmAsync("Logout", "Are you sure you want to logout?");
-        if (!confirmed) return;
+        if (!confirmed) 
+            return;
 
         try
         {
@@ -146,6 +147,14 @@ public partial class ProfileViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+
+    // This method navigates the user to the Body Metrics page when called.
+    [RelayCommand]
+    private async Task NavigateToBodyMetricsAsync()
+    {
+        await _navigationService.NavigateToAsync(AppConstants.Routes.BodyMetrics);
     }
 
 

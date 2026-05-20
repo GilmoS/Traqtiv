@@ -164,6 +164,20 @@
                     </Grid>
                 </Border>
 
+                <!-- Body Metrics Button -->
+                <Button Text="⚖️  Body Metrics"
+                    Command="{Binding NavigateToBodyMetricsCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    BackgroundColor="{StaticResource SurfaceColor}"
+                    TextColor="{StaticResource PrimaryColor}"
+                    FontSize="16"
+                    HeightRequest="52"
+                    CornerRadius="12"
+                    BorderColor="{StaticResource BorderColor}"
+                    BorderWidth="1"
+                    FontAttributes="Bold"
+                    Margin="0,0,0,12"/>
+
                 <!-- Save Button -->
                 <Button Text="💾  Save Changes"
                         Command="{Binding SaveProfileCommand}"

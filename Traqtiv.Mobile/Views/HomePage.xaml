@@ -29,10 +29,13 @@
                             StrokeThickness="0.5"
                             WidthRequest="40"
                             HeightRequest="40">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToRecommendationsCommand}"/>
+                        </Border.GestureRecognizers>
                         <Label Text="🔔"
-                               FontSize="18"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                             FontSize="18"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"/>
                     </Border>
                 </Grid>
 
@@ -191,7 +194,7 @@
 
                 <!-- Active Alerts -->
                 <VerticalStackLayout IsVisible="{Binding ActiveAlerts.Count, Converter={StaticResource IntToBoolConverter}}"
-                                     Spacing="8">
+                     Spacing="8">
                     <Label Text="Active alerts"
                            FontSize="16"
                            FontAttributes="Bold"
