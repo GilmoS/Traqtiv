@@ -28,7 +28,7 @@
 
                     <!-- Mark All as Read -->
                     <Border Grid.Column="1"
-                            BackgroundColor="#378ADD20"
+                            BackgroundColor="{StaticResource PrimaryColor}"
                             StrokeShape="RoundRectangle 10"
                             Stroke="#378ADD40"
                             StrokeThickness="0.5"
