@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Traqtiv.API.Helpers;
 using Traqtiv.API.Services.Interfaces;
+using Traqtiv.API.Models.DTOs.Responses;
+
 
 namespace Traqtiv.API.Controllers
 {
@@ -26,6 +28,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token and calls the service to get the recommendations
         // The result is returned in a standardized response format using the OkResponse helper method
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<RecommendationDto>), 200)]
         public async Task<IActionResult> GetRecommendations()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -37,6 +40,7 @@ namespace Traqtiv.API.Controllers
         // Similar to the recommendations endpoint, it extracts the user ID from the JWT token and calls the service to get the alerts
         // The alerts are returned in a standardized response format using the OkResponse helper method
         [HttpGet("alerts")]
+        [ProducesResponseType(typeof(IEnumerable<AlertDto>), 200)]
         public async Task<IActionResult> GetAlerts()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -47,6 +51,7 @@ namespace Traqtiv.API.Controllers
         // It takes the alert ID as a parameter and calls the service to update the alert status
         // After marking the alert as read, it returns a success message in a standardized response format using the OkResponse helper method
         [HttpPut("alerts/{id}/read")]
+        [ProducesResponseType(200)]
         public async Task<IActionResult> MarkAlertAsRead(Guid id)
         {
             await _recommendationService.MarkAlertAsReadAsync(id);

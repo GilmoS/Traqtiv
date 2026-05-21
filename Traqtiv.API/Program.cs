@@ -15,14 +15,24 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowWeb", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins(
+            "http://localhost:5173",
+            "http://10.0.2.2:5203",
+            "http://localhost:5203")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
 // Add services to the container
-builder.Services.AddControllers();
+// Configure JSON serialization to use string representation for enums,
+// improving readability and compatibility with client applications that consume the API
+builder.Services.AddControllers().AddJsonOptions(options =>
+    {
+      options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
+
+
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 // Configure Swagger to include JWT authentication in the API documentation, allowing developers to test authenticated endpoints directly from the Swagger UI
@@ -56,8 +66,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Add DbContext
-builder.Services.AddDbContext<SmartFitnessDb>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<SmartFitnessDb>(options =>options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add DAL
 builder.Services.AddScoped<ISmartFitnessDal, SmartFitnessDal>();
@@ -105,7 +114,9 @@ app.UseCors("AllowWeb"); // Enable CORS with the defined policy to allow request
 
 
 // Enforce HTTPS, enable authentication and authorization middleware, and map controller routes to handle incoming requests
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

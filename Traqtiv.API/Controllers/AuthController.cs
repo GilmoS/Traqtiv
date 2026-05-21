@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Traqtiv.API.Models.DTOs.Requests;
+using Traqtiv.API.Models.DTOs.Responses;
 using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Controllers
@@ -20,6 +21,7 @@ namespace Traqtiv.API.Controllers
         // It accepts a RegisterRequestDto object in the request body and returns an IActionResult
         // The method calls the RegisterAsync method of the IAuthService and returns an appropriate response based on the result
         [HttpPost("register")]
+        [ProducesResponseType(typeof(AuthResponseDto), 200)] // Indicates that a successful response will return an AuthResponseDto object with a 200 status code
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
             var result = await _authService.RegisterAsync(request);
@@ -33,6 +35,7 @@ namespace Traqtiv.API.Controllers
         // It accepts a LoginRequestDto object in the request body and returns an IActionResult
         // The method calls the LoginAsync method of the IAuthService and returns an appropriate response based on the result
         [HttpPost("login")]
+        [ProducesResponseType(typeof(AuthResponseDto), 200)]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var result = await _authService.LoginAsync(request);

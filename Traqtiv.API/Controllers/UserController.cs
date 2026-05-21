@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Traqtiv.API.Helpers;
 using Traqtiv.API.Models.DTOs.Requests;
+using Traqtiv.API.Models.DTOs.Responses;
 using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Controllers
@@ -25,6 +26,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token using the JwtHelper and calls the GetProfileAsync method of the IUserService
         // The method returns an appropriate response based on the result of the service call
         [HttpGet("profile")]
+        [ProducesResponseType(typeof(UserProfileDto), 200)]
         public async Task<IActionResult> GetProfile()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -40,6 +42,7 @@ namespace Traqtiv.API.Controllers
         // It accepts an UpdateProfileDto object in the request body, extracts the user ID from the JWT token, and calls the UpdateProfileAsync method of the IUserService
         // The method returns an appropriate response based on the result of the service call
         [HttpPut("profile")]
+        [ProducesResponseType(typeof(UserProfileDto), 200)]
         public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto request)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -55,6 +58,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token and calls the GetBodyMetricsAsync method of the IUserService
         // The method returns an appropriate response based on the result of the service call
         [HttpGet("metrics")]
+        [ProducesResponseType(typeof(IEnumerable<BodyMetricsDto>), 200)]// Indicates that a successful response will return an IEnumerable of BodyMetricsDto objects with a 200 status code
         public async Task<IActionResult> GetBodyMetrics()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -67,6 +71,7 @@ namespace Traqtiv.API.Controllers
         // It accepts an AddMetricsDto object in the request body, extracts the user ID from the JWT token, and calls the AddBodyMetricsAsync method of the IUserService
         // The method returns a success response if the metrics were added successfully
         [HttpPost("metrics")]
+        [ProducesResponseType(200)]// Indicates that a successful response will return a 200 status code
         public async Task<IActionResult> AddBodyMetrics([FromBody] AddMetricsDto request)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);

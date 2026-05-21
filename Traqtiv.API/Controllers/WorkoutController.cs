@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Traqtiv.API.Helpers;
 using Traqtiv.API.Models.DTOs.Requests;
+using Traqtiv.API.Models.DTOs.Responses;
 using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Controllers
@@ -27,6 +28,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token using the JwtHelper and calls the GetWorkoutsAsync method of the IWorkoutService
         // The method returns an appropriate response based on the result of the service call
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<WorkoutDto>), 200)] // Indicates that a successful response will return an IEnumerable of WorkoutDto objects with a 200 status code
         public async Task<IActionResult> GetWorkouts()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -38,6 +40,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token and calls the GetWorkoutByIdAsync method of the IWorkoutService with the workout ID from the route
         // The method returns an appropriate response based on the result of the service call, including a not found response if the workout does not exist or does not belong to the user
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(WorkoutDto), 200)]
         public async Task<IActionResult> GetWorkoutById(Guid id)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -52,6 +55,7 @@ namespace Traqtiv.API.Controllers
         // It accepts an AddWorkoutDto object in the request body, extracts the user ID from the JWT token, and calls the AddWorkoutAsync method of the IWorkoutService
         // The method returns an appropriate response based on the result of the service call
         [HttpPost]
+        [ProducesResponseType(typeof(WorkoutDto), 200)]
         public async Task<IActionResult> AddWorkout([FromBody] AddWorkoutDto request)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -63,6 +67,7 @@ namespace Traqtiv.API.Controllers
         // It accepts an UpdateWorkoutDto object in the request body, extracts the user ID from the JWT token, and calls the UpdateWorkoutAsync method of the IWorkoutService with the workout ID from the route
         // The method returns an appropriate response based on the result of the service call, including a not found response if the workout does not exist or does not belong to the user
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(WorkoutDto), 200)]
         public async Task<IActionResult> UpdateWorkout(Guid id, [FromBody] UpdateWorkoutDto request)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -77,6 +82,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token and calls the DeleteWorkoutAsync method of the IWorkoutService with the workout ID from the route
         // The method returns an appropriate response based on the result of the service call, including a not found response if the workout does not exist or does not belong to the user
         [HttpDelete("{id}")]
+        [ProducesResponseType(200)]
         public async Task<IActionResult> DeleteWorkout(Guid id)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);

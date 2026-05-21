@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Traqtiv.API.Models.DTOs.Responses;
 using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Controllers
@@ -24,6 +25,7 @@ namespace Traqtiv.API.Controllers
         // It takes the latitude and longitude as query parameters and calls the weather service to get the current weather data
         // The result is returned in a standardized response format using the OkResponse helper method if successful, or an error response if the service call fails
         [HttpGet]
+        [ProducesResponseType(typeof(WeatherResponseDto), 200)] // Indicates that a successful response will return a WeatherResponseDto object with a 200 OK status code
         public async Task<IActionResult> GetCurrentWeather([FromQuery] double latitude,[FromQuery] double longitude)
         {
             var result = await _weatherService.GetCurrentWeatherAsync(latitude, longitude);

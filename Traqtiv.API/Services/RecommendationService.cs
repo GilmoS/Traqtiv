@@ -7,7 +7,7 @@ using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Services
 {
-    /// Provides operations to retrieve and manage user recommendations and alerts.
+    // Provides operations to retrieve and manage user recommendations and alerts.
     // This service maps entity models to DTOs and delegates persistence to ISmartFitnessDal.
     // It also generates recommendations and alerts based on user workouts and daily activity patterns.
     public class RecommendationService : IRecommendationService

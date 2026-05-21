@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Traqtiv.API.Helpers;
 using Traqtiv.API.Models.DTOs.Requests;
+using Traqtiv.API.Models.DTOs.Responses;
 using Traqtiv.API.Services.Interfaces;
 
 namespace Traqtiv.API.Controllers
@@ -28,6 +29,7 @@ namespace Traqtiv.API.Controllers
         // It extracts the user ID from the JWT token using the JwtHelper and calls the GetActivitiesAsync method of the IDailyActivityService
         // The method returns an appropriate response based on the result of the service call
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<DailyActivityDto>), 200)]
         public async Task<IActionResult> GetActivities()
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -38,6 +40,7 @@ namespace Traqtiv.API.Controllers
         // It accepts an AddDailyActivityDto object in the request body, extracts the user ID from the JWT token, and calls the AddDailyActivityAsync method of the IDailyActivityService
         // The method returns an appropriate response based on the result of the service call
         [HttpPost]
+        [ProducesResponseType(200)]
         public async Task<IActionResult> AddDailyActivity([FromBody] AddDailyActivityDto request)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
@@ -50,6 +53,7 @@ namespace Traqtiv.API.Controllers
         // It accepts 'from' and 'to' date parameters in the query string, extracts the user ID from the JWT token, and calls the GetActivitySummaryAsync method of the IDailyActivityService
         // The method returns an appropriate response based on the result of the service call, providing a summary of activities for the specified date range
         [HttpGet("summary")]
+        [ProducesResponseType(typeof(ActivitySummaryDto), 200)]
         public async Task<IActionResult> GetActivitySummary([FromQuery] DateTime from, [FromQuery] DateTime to)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
