@@ -14,6 +14,8 @@ public partial class HomeViewModel : BaseViewModel
     private readonly IDailyActivityService _activityService;
     private readonly IRecommendationService _recommendationService;
     private readonly INavigationService _navigationService;
+    private readonly IWeatherService _weatherService;
+
 
     [ObservableProperty]
     private List<WorkoutDto> _recentWorkouts = new();
@@ -24,16 +26,28 @@ public partial class HomeViewModel : BaseViewModel
     [ObservableProperty]
     private List<AlertDto> _activeAlerts = new();
 
+    [ObservableProperty]
+    private WeatherResponseDto? _currentWeather;
+
+    [ObservableProperty]
+    private string _weatherIcon = "🌤️";
+
+    [ObservableProperty]
+    private string _cityName = string.Empty;
+
+    [ObservableProperty]
+    private string _outdoorRecommendation = string.Empty;
 
 
 
     // Initializes a new instance of the HomeViewModel class, injecting the necessary services for workouts, daily activity, recommendations, and navigation.
-    public HomeViewModel(IWorkoutService workoutService,IDailyActivityService activityService,IRecommendationService recommendationService,INavigationService navigationService)
+    public HomeViewModel(IWorkoutService workoutService,IDailyActivityService activityService,IRecommendationService recommendationService,INavigationService navigationService , IWeatherService weatherService)
     {
         _workoutService = workoutService;
         _activityService = activityService;
         _recommendationService = recommendationService;
         _navigationService = navigationService;
+        _weatherService = weatherService;
         Title = "Home";
         ActiveTab = "home";
     }
@@ -59,6 +73,7 @@ public partial class HomeViewModel : BaseViewModel
             var activitiesTask = _activityService.GetActivitiesAsync();
             var alertsTask = _recommendationService.GetAlertsAsync();
 
+
             await Task.WhenAll(workoutsTask, activitiesTask, alertsTask);
 
             RecentWorkouts = workoutsTask.Result.OrderByDescending(w => w.Date).Take(3).ToList(); // Display the 3 most recent workouts
@@ -71,9 +86,41 @@ public partial class HomeViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+        await LoadWeatherAsync(); // Load weather data after loading other data to ensure the UI is responsive.
     }
 
+    // This method retrieves the current weather data based on the user's location and updates the CurrentWeather and WeatherIcon properties accordingly.
+    private async Task LoadWeatherAsync()
+    {
+        try
+        {
+            var location = await LocationHelper.GetCurrentLocationAsync();
 
+            if (location != null)
+            {
+                var cityTask = LocationHelper.GetCityNameAsync(location.Value.latitude, location.Value.longitude);
+                var weatherTask = _weatherService.GetCurrentWeatherAsync(location.Value.latitude,location.Value.longitude);
+                await Task.WhenAll(cityTask, weatherTask);
+
+                CityName = cityTask.Result;
+                var weather = weatherTask.Result;
+                if (weather != null)
+                {
+                    CurrentWeather = weather;
+                    WeatherIcon = WeatherHelper.GetWeatherIcon(weather.Description); // Convert weather description to an emoji icon for display in the UI.
+
+                    // Get outdoor workout recommendation based on temperature and air quality index, providing users with actionable advice on whether it's suitable for outdoor exercise.
+                    OutdoorRecommendation = WeatherHelper.GetOutdoorRecommendation(weather.Temperature, weather.AirQualityIndex); 
+                }
+            }
+        }
+        catch (Exception)
+        {
+            // weather data is optional, so we can ignore exceptions here
+
+        }
+
+    }
 
     // This command navigates the user to the Recommendations view when executed.
     [RelayCommand]

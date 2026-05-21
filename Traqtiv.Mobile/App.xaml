@@ -11,6 +11,7 @@
 			<helpers:TabColorConverter x:Key="TabColorConverter"/>
 			<helpers:TypeColorConverter x:Key="TypeColorConverter"/>
 			<helpers:StatusColorConverter x:Key="StatusColorConverter"/>
+			<helpers:StringToBoolConverter x:Key="StringToBoolConverter"/>
 
 
 			<!-- Colors -->

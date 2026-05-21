@@ -37,7 +37,86 @@
                              HorizontalOptions="Center"
                              VerticalOptions="Center"/>
                     </Border>
+					
                 </Grid>
+
+				<!-- Weather Widget -->
+				<Border BackgroundColor="{StaticResource SurfaceColor}"
+						StrokeShape="RoundRectangle 12"
+						Stroke="{StaticResource BorderColor}"
+						StrokeThickness="0.5"
+						Padding="16"
+						Margin="0,0,0,24">
+					<VerticalStackLayout Spacing="12">
+
+						<!-- Location -->
+						<HorizontalStackLayout Spacing="6">
+							<Label Text="📍" FontSize="14"/>
+							<Label Text="{Binding CityName, FallbackValue='Locating...'}"
+								   FontSize="13"
+								   TextColor="{StaticResource TextSecondaryColor}"/>
+						</HorizontalStackLayout>
+
+						<!-- Weather Info -->
+						<Grid ColumnDefinitions="*,Auto">
+
+							<!-- Left — Temp + Description -->
+							<VerticalStackLayout Grid.Column="0" Spacing="4">
+								<HorizontalStackLayout Spacing="8">
+									<Label Text="{Binding WeatherIcon}"
+										   FontSize="36"/>
+									<Label Text="{Binding CurrentWeather.Temperature, 
+                                 StringFormat='{0:F0}°C',
+                                 FallbackValue='--°C'}"
+										   FontSize="32"
+										   FontAttributes="Bold"
+										   TextColor="{StaticResource TextPrimaryColor}"
+										   VerticalOptions="Center"/>
+								</HorizontalStackLayout>
+								<Label Text="{Binding CurrentWeather.Description, FallbackValue='Loading...'}"
+									   FontSize="13"
+									   TextColor="{StaticResource TextSecondaryColor}"/>
+							</VerticalStackLayout>
+
+							<!-- Right — Air Quality -->
+							<VerticalStackLayout Grid.Column="1"
+												 HorizontalOptions="End"
+												 Spacing="4">
+								<Label Text="AIR QUALITY"
+									   FontSize="11"
+									   TextColor="{StaticResource TextSecondaryColor}"
+									   CharacterSpacing="1"
+									   HorizontalOptions="End"/>
+								<Label Text="{Binding CurrentWeather.AirQualityDescription, FallbackValue='--'}"
+									   FontSize="16"
+									   FontAttributes="Bold"
+									   TextColor="{StaticResource SuccessColor}"
+									   HorizontalOptions="End"/>
+								<Label Text="{Binding CurrentWeather.AirQualityIndex, 
+                             StringFormat='AQI: {0}',
+                             FallbackValue='AQI: --'}"
+									   FontSize="12"
+									   TextColor="{StaticResource TextSecondaryColor}"
+									   HorizontalOptions="End"/>
+							</VerticalStackLayout>
+
+						</Grid>
+
+						<!-- Outdoor Recommendation -->
+						<Border BackgroundColor="#1D9E7515"
+								StrokeShape="RoundRectangle 8"
+								Padding="12,8"
+								IsVisible="{Binding OutdoorRecommendation, 
+                           Converter={StaticResource StringToBoolConverter}}">
+							<Label Text="{Binding OutdoorRecommendation}"
+								   FontSize="12"
+								   TextColor="{StaticResource SuccessColor}"/>
+						</Border>
+
+					</VerticalStackLayout>
+				</Border>
+				
+				
 
                 <!-- Stats Cards -->
                 <Grid ColumnDefinitions="*,*"

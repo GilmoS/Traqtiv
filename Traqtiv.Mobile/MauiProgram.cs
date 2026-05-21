@@ -43,6 +43,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IRecommendationService, RecommendationService>();
         builder.Services.AddSingleton<INavigationService, NavigationService>();
         builder.Services.AddSingleton<IUserService, UserService>();
+        builder.Services.AddSingleton<IWeatherService, WeatherService>();
 
         // ViewModels - Transient 
         builder.Services.AddTransient<LoginViewModel>();
