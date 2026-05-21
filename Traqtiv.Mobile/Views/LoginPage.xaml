@@ -11,37 +11,14 @@
 		<VerticalStackLayout Padding="24,48,24,32" Spacing="0">
 
 			<!-- Logo -->
-			<VerticalStackLayout HorizontalOptions="Center"
-                                 Spacing="8"
-                                 Margin="0,0,0,40">
-				<Border BackgroundColor="{StaticResource SurfaceColor}"
-                        StrokeShape="RoundRectangle 20"
-                        Stroke="{StaticResource BorderColor}"
-                        StrokeThickness="0.5"
-                        WidthRequest="80"
-                        HeightRequest="80"
-                        HorizontalOptions="Center">
-					<Label Text="🏃"
-                           FontSize="36"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
-				</Border>
+            <Image x:Name="LogoImage"
+                  HeightRequest="180"
+                  WidthRequest="280"
+                  HorizontalOptions="Center"
+                  Aspect="AspectFit"
+                  Margin="0,0,0,32"/>
 
-				<Label Text="traqtiv"
-                       FontSize="32"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource TextPrimaryColor}"
-                       HorizontalOptions="Center"
-                       CharacterSpacing="2"/>
-
-				<Label Text="TRACK. ACTIV. FITNESS."
-                       FontSize="11"
-                       TextColor="{StaticResource TextHintColor}"
-                       HorizontalOptions="Center"
-                       CharacterSpacing="4"/>
-			</VerticalStackLayout>
-
-			<!-- Title -->
+            <!-- Title -->
 			<Label Text="Welcome back"
                    Style="{StaticResource TitleLabel}"
                    Margin="0,0,0,6"/>

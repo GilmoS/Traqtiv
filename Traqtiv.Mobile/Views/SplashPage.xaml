@@ -11,34 +11,13 @@
                              HorizontalOptions="Center"
                              Spacing="16">
 
-			<Border BackgroundColor="#1A2634"
-                    StrokeShape="RoundRectangle 20"
-                    Stroke="#378ADD40"
-                    StrokeThickness="0.5"
-                    WidthRequest="80"
-                    HeightRequest="80"
-                    HorizontalOptions="Center">
-				<Image Source="logo.png"
-                       WidthRequest="48"
-                       HeightRequest="48"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-			</Border>
-
-			<Label Text="traqtiv"
-                   FontSize="36"
-                   FontAttributes="Bold"
-                   TextColor="#E6F1FB"
-                   HorizontalOptions="Center"
-                   CharacterSpacing="2"/>
-
-			<Label Text="TRACK. ACTIV. FITNESS."
-                   FontSize="11"
-                   TextColor="#5F5E5A"
-                   HorizontalOptions="Center"
-                   CharacterSpacing="4"/>
-
-			<ActivityIndicator IsRunning="True"
+            <Image x:Name="LogoImage"
+                   HeightRequest="250"
+                   WidthRequest="350"
+                  HorizontalOptions="Center"
+                  Aspect="AspectFit"/>
+            
+            <ActivityIndicator IsRunning="True"
                                Color="#378ADD"
                                Margin="0,24,0,0"
                                HorizontalOptions="Center"/>

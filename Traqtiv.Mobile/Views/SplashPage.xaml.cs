@@ -22,8 +22,13 @@ public partial class SplashPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        using var stream = await FileSystem.OpenAppPackageFileAsync("logo_transparent.png");
+        LogoImage.Source = ImageSource.FromStream(() => stream);
         await InitializeAppAsync();
     }
+
+
+
     // This method simulates a loading process and checks if the user is logged in.
     // It then navigates to the appropriate page based on the login status.
     private async Task InitializeAppAsync()
