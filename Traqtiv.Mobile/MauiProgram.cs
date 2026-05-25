@@ -27,6 +27,7 @@ public static class MauiProgram
         {
             client.BaseAddress = new Uri(AppConstants.ApiBaseUrl);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.Timeout = TimeSpan.FromSeconds(30);
         });
 
         // ApiClient

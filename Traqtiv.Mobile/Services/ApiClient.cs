@@ -15,6 +15,7 @@ public class ApiClient
     public ApiClient(IHttpClientFactory httpClientFactory)
     {
         _httpClient = httpClientFactory.CreateClient("TraqtivApi");
+        _httpClient.Timeout = TimeSpan.FromSeconds(30); //a reasonable timeout for API requests.
         _client = new SmartFitnessClient(AppConstants.ApiBaseUrl, _httpClient);
     }
 
