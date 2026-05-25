@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
              x:Class="Traqtiv.Mobile.Views.RegisterPage"
+             x:DataType="vm:RegisterViewModel"
              Shell.NavBarIsVisible="False">
 
     <ScrollView>

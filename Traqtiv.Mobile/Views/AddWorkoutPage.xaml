@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
              xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
              x:Class="Traqtiv.Mobile.Views.AddWorkoutPage"
+             x:DataType="vm:AddWorkoutViewModel"
              Shell.NavBarIsVisible="False">
 
 	<ScrollView>

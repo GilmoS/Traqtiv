@@ -5,6 +5,7 @@
              xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
              xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
              x:Class="Traqtiv.Mobile.Views.WorkoutsPage"
+             x:DataType="vm:WorkoutsViewModel"
              Shell.NavBarIsVisible="False">
 
 

@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
              xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
              x:Class="Traqtiv.Mobile.Views.ProfilePage"
+             x:DataType="vm:ProfileViewModel"
              Shell.NavBarIsVisible="False">
 
     

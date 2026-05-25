@@ -5,6 +5,7 @@
              xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
              xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
              x:Class="Traqtiv.Mobile.Views.RecommendationsPage"
+             x:DataType="vm:RecommendationsViewModel"
              Shell.NavBarIsVisible="False">
 
    
