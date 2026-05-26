@@ -98,5 +98,10 @@ namespace Traqtiv.API.Services
 
             await _dal.AddMetricsAsync(metrics);
         }
+
+        public async Task AddBodyMetricsAsync(Guid userId, BodyMetrics metrics)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

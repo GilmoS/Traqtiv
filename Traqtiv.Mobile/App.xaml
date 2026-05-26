@@ -27,7 +27,35 @@
 			<Color x:Key="SuccessColor">#1D9E75</Color>
 			<Color x:Key="DangerColor">#E24B4A</Color>
 
-			<!-- Styles -->
+            <!-- Typography -->
+            <x:Double x:Key="FontSizeXS">11</x:Double>
+            <x:Double x:Key="FontSizeS">13</x:Double>
+            <x:Double x:Key="FontSizeM">14</x:Double>
+            <x:Double x:Key="FontSizeL">16</x:Double>
+            <x:Double x:Key="FontSizeXL">18</x:Double>
+            <x:Double x:Key="FontSizeXXL">22</x:Double>
+            <x:Double x:Key="FontSizeDisplay">32</x:Double>
+
+
+            <!-- Additional Label Styles -->
+            <Style TargetType="Label" x:Key="CaptionLabel">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeXS}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextHintColor}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="BodyLabel">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeM}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="HeadingLabel">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeXXL}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+
+            <!-- Styles -->
 			<Style TargetType="ContentPage" ApplyToDerivedTypes="True">
 				<Setter Property="BackgroundColor"
                         Value="{StaticResource BackgroundColor}"/>

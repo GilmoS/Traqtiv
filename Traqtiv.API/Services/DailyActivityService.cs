@@ -90,5 +90,10 @@ namespace Traqtiv.API.Services
                 DateTo = to.ToUniversalTime()
             };
         }
+
+        public async Task AddDailyActivityAsync(Guid userId, DailyActivityDto activity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
