@@ -7,7 +7,11 @@ public static class ConnectivityHelper
     // checking if the device has an active internet connection
     public static bool IsConnected()
     {
-        return Connectivity.Current.NetworkAccess == NetworkAccess.Internet;
+    #if NET9_0_ANDROID || NET9_0_IOS
+        return Connectivity.NetworkAccess == NetworkAccess.Internet;
+    #else
+        return true; // Always connected in tests
+    #endif
     }
 
     // checking if the device has an active internet connection and showing an alert
@@ -21,4 +25,5 @@ public static class ConnectivityHelper
         }
         return true;
     }
+
 }

@@ -21,7 +21,8 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Traqtiv.API\Traqtiv.API.csproj" />
-	</ItemGroup>
+    <ProjectReference Include="..\Traqtiv.API\Traqtiv.API.csproj" />
+    <ProjectReference Include="..\Traqtiv.Mobile\Traqtiv.Mobile.csproj" />
+</ItemGroup>
 
 </Project>
