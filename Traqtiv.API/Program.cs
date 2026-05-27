@@ -15,12 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowWeb", policy =>
     {
-        policy.WithOrigins(
-            "http://localhost:5173",
-            "http://10.0.2.2:5203",
-            "http://localhost:5203")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:5173","http://10.0.2.2:5203","http://localhost:5203").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
@@ -34,7 +29,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+
 // Configure Swagger to include JWT authentication in the API documentation, allowing developers to test authenticated endpoints directly from the Swagger UI
 // This configuration adds a security definition for Bearer tokens and a security requirement to ensure that the Swagger UI prompts for a JWT token when testing protected endpoints
 builder.Services.AddSwaggerGen(c =>
@@ -122,3 +117,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// The Program class is defined as a partial class to allow for separation of concerns and better organization of code and for easier testing
+//,especially when using integration tests that require a reference to the Program class for setting up the test server and configuring the application environment
+public partial class Program { }

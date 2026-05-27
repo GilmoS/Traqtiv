@@ -19,9 +19,7 @@ public class BodyMetricsViewModelTests
         _mockMetricsService = new Mock<IBodyMetricsService>();
         _mockHealthService = new Mock<HealthService>();
 
-        _viewModel = new BodyMetricsViewModel(
-            _mockMetricsService.Object,
-            _mockHealthService.Object);
+        _viewModel = new BodyMetricsViewModel(_mockMetricsService.Object,_mockHealthService.Object);
     }
 
     [Fact]

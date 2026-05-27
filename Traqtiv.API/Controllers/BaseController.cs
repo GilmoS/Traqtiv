@@ -17,6 +17,13 @@ namespace Traqtiv.API.Controllers
         {
             return BadRequest(new { Success = false, Message = message });
         }
+
+        // UnauthorizedResponse returns a standardized unauthorized response with the provided message
+        protected IActionResult UnauthorizedResponse(string message)
+        {
+            return Unauthorized(new { Success = false, Message = message });
+        }
+
         // NotFoundResponse returns a standardized not found response with the provided message
         protected IActionResult NotFoundResponse(string message)
         {

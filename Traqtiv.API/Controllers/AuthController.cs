@@ -39,8 +39,9 @@ namespace Traqtiv.API.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
             var result = await _authService.LoginAsync(request);
+
             if (!result.Success)
-                return ErrorResponse(result.Message);
+                return UnauthorizedResponse(result.Message);
 
             return OkResponse(result);
         }
