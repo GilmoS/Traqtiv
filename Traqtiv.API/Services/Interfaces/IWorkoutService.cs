@@ -25,6 +25,6 @@ namespace Traqtiv.API.Services.Interfaces
 
         
         /// Deletes the specified workout for the given user.
-        Task DeleteWorkoutAsync(Guid userId, Guid workoutId);
+        Task<bool> DeleteWorkoutAsync(Guid userId, Guid workoutId);
     }
 }

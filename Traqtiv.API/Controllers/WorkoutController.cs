@@ -86,7 +86,11 @@ namespace Traqtiv.API.Controllers
         public async Task<IActionResult> DeleteWorkout(Guid id)
         {
             var userId = JwtHelper.GetUserIdFromToken(User);
-            await _workoutService.DeleteWorkoutAsync(userId, id);
+            var success = await _workoutService.DeleteWorkoutAsync(userId, id);
+            
+            if (!success)
+                return NotFoundResponse("Workout not found");
+
             return OkResponse(new { Success = true, Message = "Workout deleted successfully" });
         }
     }

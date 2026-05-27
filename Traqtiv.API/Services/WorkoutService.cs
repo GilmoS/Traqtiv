@@ -130,12 +130,14 @@ namespace Traqtiv.API.Services
 
         // Deletes a workout for the specified user.
         // If the workout is not found or does not belong to the user, no action is taken.
-        public async Task DeleteWorkoutAsync(Guid userId, Guid workoutId)
+        public async Task<bool> DeleteWorkoutAsync(Guid userId, Guid workoutId)
         {
             var workout = await _dal.GetWorkoutByIdAsync(workoutId);
-            if (workout == null || workout.UserId != userId) return;
+            if (workout == null || workout.UserId != userId)
+                return false;
 
             await _dal.DeleteWorkoutAsync(workoutId);
+            return true;
         }
     }
 }
