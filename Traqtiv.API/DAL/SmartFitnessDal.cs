@@ -67,9 +67,7 @@ namespace Traqtiv.API.DAL
 
         // BodyMetrics
         public async Task<List<BodyMetrics>> GetMetricsByUserIdAsync(Guid userId)
-            => await _db.BodyMetrics
-                .Where(b => b.UserId == userId)
-                .OrderByDescending(b => b.MeasuredAt)
+            => await _db.BodyMetrics.Where(b => b.UserId == userId).OrderByDescending(b => b.MeasuredAt)
                 .ToListAsync();
 
         public async Task AddMetricsAsync(BodyMetrics metrics)
@@ -80,14 +78,21 @@ namespace Traqtiv.API.DAL
 
         // DailyActivity
         public async Task<DailyActivity?> GetDailyActivityAsync(Guid userId, DateTime date)
-            => await _db.DailyActivities
-                .FirstOrDefaultAsync(d => d.UserId == userId && d.Date.Date == date.Date);
+        {
+            var utcDate = DateTime.SpecifyKind(date, DateTimeKind.Utc); // Ensure date is treated as UTC for consistent querying
+            return await _db.DailyActivities.FirstOrDefaultAsync(d => d.UserId == userId && d.Date.Date == utcDate.Date);
+        }
 
         public async Task<List<DailyActivity>> GetActivitiesByRangeAsync(Guid userId, DateTime from, DateTime to)
-            => await _db.DailyActivities
-                .Where(d => d.UserId == userId && d.Date >= from && d.Date <= to)
-                .OrderBy(d => d.Date)
-                .ToListAsync();
+        {
+            // Ensure from and to are treated as UTC for consistent querying
+            var utcFrom = DateTime.SpecifyKind(from, DateTimeKind.Utc);
+            var utcTo = DateTime.SpecifyKind(to, DateTimeKind.Utc);
+
+            return await _db.DailyActivities.Where(d => d.UserId == userId && d.Date >= utcFrom && d.Date <= utcTo)
+                .OrderBy(d => d.Date).ToListAsync();
+        }
+
 
         public async Task AddDailyActivityAsync(DailyActivity activity)
         {
