@@ -33,7 +33,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>CFBundleDisplayName</key>
-	<string>Traqtiv</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Traqtiv needs your location to provide weather and air quality information.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Traqtiv needs your location to provide weather and air quality information.</string>
+		<key>CFBundleDisplayName</key>
+		<string>Traqtiv</string>
 </dict>
 </plist>
