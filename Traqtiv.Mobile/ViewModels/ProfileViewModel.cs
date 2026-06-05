@@ -133,15 +133,20 @@ public partial class ProfileViewModel : BaseViewModel
         if (IsBusy)
             return;
 
-        var confirmed = await AlertHelper.ShowConfirmAsync("Logout", "Are you sure you want to logout?");
-        if (!confirmed) 
-            return;
-
         try
         {
             IsBusy = true;
-            await _authService.LogoutAsync();
-            await _navigationService.NavigateToAsync(AppConstants.Routes.Login);
+            await _userService.UpdateProfileAsync(new UpdateProfileDto
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+                DateOfBirth = DateOfBirth
+            });
+            await AlertHelper.ShowSuccessAsync("Profile updated successfully.");
+        }
+        catch (Exception ex)
+        {
+            await AlertHelper.ShowErrorAsync(ex.Message);
         }
         finally
         {

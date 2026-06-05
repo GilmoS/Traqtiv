@@ -37,7 +37,7 @@
                         <Label Text="✓ Mark all read"
                                FontSize="12"
                                FontAttributes="Bold"
-                               TextColor="{StaticResource PrimaryColor}">
+                               TextColor ="White">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     Command="{Binding MarkAllAlertsAsReadCommand}"/>
