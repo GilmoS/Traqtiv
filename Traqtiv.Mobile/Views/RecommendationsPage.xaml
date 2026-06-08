@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+    
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
@@ -6,6 +7,7 @@
              xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
              x:Class="Traqtiv.Mobile.Views.RecommendationsPage"
              x:DataType="vm:RecommendationsViewModel"
+             x:Name="ThisPage"
              Shell.NavBarIsVisible="False">
 
    
@@ -28,22 +30,16 @@
                     </VerticalStackLayout>
 
                     <!-- Mark All as Read -->
-                    <Border Grid.Column="1"
+                    <Button Grid.Column="1"
+                            Text="✓ Mark all read"
+                            Command="{Binding MarkAllAlertsAsReadCommand}"
                             BackgroundColor="{StaticResource PrimaryColor}"
-                            StrokeShape="RoundRectangle 10"
-                            Stroke="#378ADD40"
-                            StrokeThickness="0.5"
-                            Padding="12,6">
-                        <Label Text="✓ Mark all read"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               TextColor ="White">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    Command="{Binding MarkAllAlertsAsReadCommand}"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </Border>
+                            TextColor="White"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            Padding="12,6"
+                            CornerRadius="10"
+                            HeightRequest="36"/>    
                 </Grid>
 
                 <!-- Loading -->
@@ -96,8 +92,7 @@
 
                                     <!-- Mark as Read Button -->
                                     <Button Text="✓ Mark as Read"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecommendationsViewModel}}, 
-                                                     Path=MarkAlertAsReadCommand}"
+                                            Command="{Binding BindingContext.MarkAlertAsReadCommand, Source={x:Reference ThisPage}}"
                                             CommandParameter="{Binding .}"
                                             BackgroundColor="{StaticResource PrimaryColor}"
                                             TextColor="{StaticResource TextPrimaryColor}"

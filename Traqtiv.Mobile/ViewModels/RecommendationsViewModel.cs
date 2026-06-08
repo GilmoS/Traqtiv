@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using Traqtiv.Mobile.Helpers;
 using Traqtiv.Mobile.Models;
 using Traqtiv.Mobile.Services.Interfaces;
@@ -15,11 +16,10 @@ public partial class RecommendationsViewModel : BaseViewModel
     private readonly IRecommendationService _recommendationService;
 
     [ObservableProperty]
-    private List<RecommendationDto> _recommendations = new();
+    private ObservableCollection<RecommendationDto> _recommendations = new();
 
     [ObservableProperty]
-    private List<AlertDto> _alerts = new();
-
+    private ObservableCollection<AlertDto> _alerts = new();
 
     // Constructor that initializes the recommendation service and sets the title of the ViewModel.
     public RecommendationsViewModel(IRecommendationService recommendationService)
@@ -48,8 +48,16 @@ public partial class RecommendationsViewModel : BaseViewModel
 
             await Task.WhenAll(recommendationsTask, alertsTask); // Wait for both tasks to complete before updating the properties.
 
-            Recommendations = recommendationsTask.Result;
-            Alerts = alertsTask.Result;
+            // Clear existing data and update with the new data from the service.
+            Recommendations.Clear();
+            foreach (var r in recommendationsTask.Result)
+                Recommendations.Add(r);
+
+            var alerts = alertsTask.Result.Where(a => !a.IsRead).ToList();
+
+            Alerts.Clear();
+            foreach (var a in alerts)
+                Alerts.Add(a);
         }
         finally
         {
@@ -71,7 +79,7 @@ public partial class RecommendationsViewModel : BaseViewModel
             var success = await _recommendationService.MarkAlertAsReadAsync(alert.Id); // Call the service to mark the alert as read and check if it was successful.
 
             if (success)
-                await LoadDataAsync();
+                Alerts.Remove(alert);
             else
                 await AlertHelper.ShowErrorAsync("Failed to mark alert as read.");
         }
@@ -88,7 +96,11 @@ public partial class RecommendationsViewModel : BaseViewModel
         if (IsBusy)
             return;
 
-        if (!await ConnectivityHelper.CheckAndAlertAsync()) 
+
+        var isConnected = await ConnectivityHelper.CheckAndAlertAsync();
+        System.Diagnostics.Debug.WriteLine($"IsConnected: {isConnected}, Alerts count: {Alerts.Count}, Unread: {Alerts.Count(a => !a.IsRead)}");
+
+        if (!isConnected) 
             return;
 
         try

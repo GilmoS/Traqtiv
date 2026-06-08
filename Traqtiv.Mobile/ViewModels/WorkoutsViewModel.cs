@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using Traqtiv.Mobile.Helpers;
 using Traqtiv.Mobile.Models;
 using Traqtiv.Mobile.Services.Interfaces;
@@ -15,7 +16,7 @@ public partial class WorkoutsViewModel : BaseViewModel
     private readonly INavigationService _navigationService;
 
     [ObservableProperty]
-    private List<WorkoutDto> _workouts = new();
+    private ObservableCollection<WorkoutDto> _workouts = new();
 
     [ObservableProperty]
     private WorkoutDto? _selectedWorkout;
@@ -34,13 +35,18 @@ public partial class WorkoutsViewModel : BaseViewModel
     private async Task LoadWorkoutsAsync()
     {
         if (IsBusy) return;
-        if (!await ConnectivityHelper.CheckAndAlertAsync()) return;
+        if (!await ConnectivityHelper.CheckAndAlertAsync()) 
+            return;
 
         // Load workouts from the service and update the Workouts property, while managing the IsBusy state to prevent multiple simultaneous loads.
         try
         {
             IsBusy = true;
-            Workouts = await _workoutService.GetWorkoutsAsync();
+
+            var result = await _workoutService.GetWorkoutsAsync();
+            Workouts.Clear();
+            foreach (var w in result)
+                Workouts.Add(w);
         }
         finally
         {
@@ -75,7 +81,7 @@ public partial class WorkoutsViewModel : BaseViewModel
             var success = await _workoutService.DeleteWorkoutAsync(workout.Id);
 
             if (success)
-                await LoadWorkoutsAsync();
+                Workouts.Remove(workout);
             else
                 await AlertHelper.ShowErrorAsync("Failed to delete workout.");
         }
