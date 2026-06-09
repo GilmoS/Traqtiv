@@ -63,8 +63,8 @@ export const WorkoutType = {
 export type WorkoutType = typeof WorkoutType[keyof typeof WorkoutType]
 // ─── Workout Status ─────────────────────────────────────────────
 export const WorkoutStatus = {
-  Planned: 0,
-  Completed: 1
+    Planned: 'Planned',
+    Completed: 'Completed'
 } as const
 export type WorkoutStatus = typeof WorkoutStatus[keyof typeof WorkoutStatus]
 // ─── Workout DTOs ─────────────────────────────────────────────

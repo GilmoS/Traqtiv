@@ -6,6 +6,8 @@ import { recommendationService } from '../services/recommendationService'
 import { weatherService } from '../services/weatherService'
 import type { AddWorkoutDto, UpdateWorkoutDto, AddDailyActivityDto, AddMetricsDto, UpdateProfileDto } from '../types'
 
+import { useState, useEffect } from 'react'
+
 // ─── Workouts ─────────────────────────────────────────────
 export const useWorkouts = () =>
   useQuery({ queryKey: ['workouts'], queryFn: workoutService.getAll })
@@ -93,9 +95,19 @@ export const useMarkAlertRead = () => {
 }
 
 // ─── Weather ──────────────────────────────────────────────
-export const useWeather = () =>
-  useQuery({
-    queryKey: ['weather'],
-    queryFn: weatherService.getCurrent,
-    staleTime: 5 * 60 * 1000, // cache for 5 minutes
-  })
+export const useWeather = () => {
+    const [coords, setCoords] = useState<{ lat: number, lng: number } | null>(null)
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            pos => setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+        )
+    }, [])
+
+    return useQuery({
+        queryKey: ['weather', coords],
+        queryFn: () => coords ? weatherService.getCurrent(coords.lat, coords.lng) : Promise.reject(),
+        enabled: !!coords,
+        staleTime: 5 * 60 * 1000,
+    })
+}
