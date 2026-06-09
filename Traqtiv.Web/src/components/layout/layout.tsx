@@ -36,27 +36,22 @@ export function Layout({ children }: { children: ReactNode }) {
         flexShrink: 0,
       }}>
 
-        {/* Logo */}
-        <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 32, height: 32,
-              background: 'var(--accent)',
-              borderRadius: 8,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Zap size={18} color="#0a0c0f" fill="#0a0c0f" />
-            </div>
-            <div>
-              <div style={{ fontWeight: 800, fontSize: 20, color: 'var(--text-primary)' }}>
-                traqtiv
+              {/* Logo */}
+              <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid var(--border)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <img
+                          src="/appicon.png"
+                          style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'contain' }} />
+                      <div>
+                          <div style={{ fontWeight: 800, fontSize: 20, color: 'var(--text-primary)' }}>
+                              traqtiv
+                          </div>
+                          <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
+                              TRACK. ACTIV. FITNESS.
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
-                TRACK. ACTIV. FITNESS.
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Nav Links */}
         <nav style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 2 }}>
