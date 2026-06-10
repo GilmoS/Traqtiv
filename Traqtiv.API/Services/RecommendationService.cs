@@ -62,6 +62,15 @@ namespace Traqtiv.API.Services
             await _dal.MarkAlertAsReadAsync(alertId);
         }
 
+
+        // Marks a specific recommendation as read for the specified user.
+        public async Task MarkRecommendationAsReadAsync(Guid recommendationId)
+        {
+            await _dal.MarkRecommendationAsReadAsync(recommendationId);
+        }
+
+        
+
         // overload and recovery recommendations based on recent workouts
         // This method is called by WorkoutService whenever a workout is added.
         // It checks the user's workouts for the past week and generates alerts or recommendations if they have been training too much or consistently.

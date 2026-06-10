@@ -57,5 +57,17 @@ namespace Traqtiv.API.Controllers
             await _recommendationService.MarkAlertAsReadAsync(id);
             return OkResponse(new { Success = true, Message = "Alert marked as read" });
         }
+
+
+        // This endpoint allows the user to mark a specific recommendation as read
+        // It takes the recommendation ID as a parameter and calls the service to update the recommendation status
+        // After marking the recommendation as read, it returns a success message in a standardized response format using the OkResponse helper method
+        [HttpPut("recommendations/{id}/read")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> MarkRecommendationAsRead(Guid id)
+        {
+            await _recommendationService.MarkRecommendationAsReadAsync(id);
+            return OkResponse(new { Success = true, Message = "Recommendation marked as read" });
+        }
     }
 }

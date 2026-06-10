@@ -18,7 +18,9 @@ namespace Traqtiv.API.Services.Interfaces
         /// Marks the specified alert as read.
         Task MarkAlertAsReadAsync(Guid alertId);
 
-        
+        /// Marks the specified recommendation as read.
+        Task MarkRecommendationAsReadAsync(Guid recommendationId);
+
         /// Notifies the recommendation service that a workout was added for the given user.
         Task OnWorkoutAddedAsync(Guid userId);
 
