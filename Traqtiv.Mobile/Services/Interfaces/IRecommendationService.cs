@@ -13,4 +13,8 @@ public interface IRecommendationService : IService
 
     // Marks an alert as read by its unique identifier, returning true if the operation was successful. 
     Task<bool> MarkAlertAsReadAsync(Guid id);
+
+    // Marks a recommendation as read by its unique identifier, returning true if the operation was successful.
+    Task<bool> MarkRecommendationAsReadAsync(Guid id);
+
 }

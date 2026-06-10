@@ -72,4 +72,22 @@ public class RecommendationService : IRecommendationService
             return false;
         }
     }
+
+    // Marks a specific recommendation as read by its ID.
+    // It attaches the authentication token and calls the RecommendationsAsync method with the recommendation ID to perform the action.
+    public async Task<bool> MarkRecommendationAsReadAsync(Guid id)
+    {
+        try
+        {
+            await _apiClient.AttachTokenAsync();
+            await _apiClient.Client.ReadAsync(id);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+
 }

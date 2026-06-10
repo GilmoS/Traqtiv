@@ -146,6 +146,17 @@
                                     <Label Text="{Binding Message}"
                                            FontSize="14"
                                            TextColor="{StaticResource TextPrimaryColor}"/>
+                                    
+                                    <!-- Mark as Read Button -->
+                                    <Button Text="✓ Mark as Read"
+                                            Command="{Binding BindingContext.MarkRecommendationAsReadCommand, Source={x:Reference ThisPage}}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="{StaticResource PrimaryColor}"
+                                            TextColor="White"
+                                            FontSize="13"
+                                            FontAttributes="Bold"
+                                            HeightRequest="36"
+                                            CornerRadius="8"/>  
 
                                 </VerticalStackLayout>
                             </Border>
