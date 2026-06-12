@@ -126,7 +126,7 @@ The system manages the following tables in PostgreSQL:
  
 ### Prerequisites
  
-- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download)
 - [Node.js 18+](https://nodejs.org/)
 - [PostgreSQL 15+](https://www.postgresql.org/)
 ### Backend
@@ -142,7 +142,7 @@ dotnet ef database update       # Creates the database and applies migrations
 dotnet run
 ```
  
-> The server runs on `https://localhost:5001`. Swagger UI is available at `/swagger`.
+> The server runs on `http://localhost:5203`. Swagger UI is available at `/swagger`.
  
 ### Web Dashboard
  
@@ -161,8 +161,8 @@ cd Traqtiv.Mobile
  
 # Update the server address in Helpers/AppConstants.cs
  
-dotnet build -t:Run -f net8.0-android   # Android
-dotnet build -t:Run -f net8.0-ios       # iOS
+dotnet build -t:Run -f net9.0-android   # Android
+dotnet build -t:Run -f net9.0-ios       # iOS
 ```
  
 > **Note:** In the current MVP, installation is done via a dedicated APK/IPA file, not through an app store.
@@ -171,7 +171,9 @@ dotnet build -t:Run -f net8.0-ios       # iOS
  
 ```bash
 cd Traqtiv.Mobile
-dotnet nswag run nswag.json
+dotnet nswag openapi2csclient /input:http://localhost:5203/swagger/v1/swagger.json /classname:SmartFitnessClient /namespace:Traqtiv.Mobile.Models /output:Traqtiv.Mobile/Services/SmartFitnessClient.cs
+
+
 ```
  
 ---
@@ -183,7 +185,7 @@ Create `appsettings.Development.json` in the Backend directory:
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5432;Database=SmartFitnessDb;Username=YOUR_USER;Password=YOUR_PASSWORD"
+    "DefaultConnection": "Host=localhost;Port=5434;Database=SmartFitnessDb;Username=YOUR_USER;Password=YOUR_PASSWORD"
   },
   "Jwt": {
     "Secret": "YOUR_SECRET_KEY_MIN_32_CHARS",
@@ -258,4 +260,4 @@ The Open University of Israel
  
 ---
  
-> *"traqtiv - because tracking your progress is the first step toward reaching your goal."*
+
