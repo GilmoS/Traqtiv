@@ -176,57 +176,54 @@ export function DashboardPage() {
             </Card>
           )}
 
-          {/* Alerts */}
-          <Card className="fade-in-3">
-            <div
-             style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-              <div
-                style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Bell size={16} color="var(--yellow)" />
-                <h2 style={{ fontSize: 16, fontWeight: 700 }}>Alerts</h2>
-                {unreadAlerts.length > 0 && (
-                  <div
-                   style={{
-                    background: 'var(--red)',
-                    color: '#fff',
-                    borderRadius: '50%',
-                    width: 18, height: 18,
-                    fontSize: 10, fontWeight: 700,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    {unreadAlerts.length}
-                  </div>
-                )}
-              </div>
-              <Link to="/recommendations" style={{ fontSize: 12, color: 'var(--accent)' }}>
-                View All
-              </Link>
-            </div>
-            {alerts.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', textAlign: 'center', padding: '16px 0' }}>
-                  No alerts
-                </p>
-                : <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  {alerts.slice(0, 4).map(a => (
-                    <div key={a.id} style={{
-                      padding: '10px 12px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: a.isRead ? 'var(--bg-secondary)' : alertSeverityColor[a.severity] + '10',
-                      borderRight: `3px solid ${a.isRead ? 'var(--border)' : alertSeverityColor[a.severity]}`,
-                      opacity: a.isRead ? 0.6 : 1,
-                    }}>
-                      <div style={{ marginBottom: 4 }}>
-                        <Badge color={alertSeverityColor[a.severity]}>
-                          {alertSeverityLabel[a.severity]}
-                        </Badge>
+                  {/* Alerts */}
+                  <Card className="fade-in-3">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <Bell size={16} color="var(--yellow)" />
+                              <h2 style={{ fontSize: 16, fontWeight: 700 }}>Alerts</h2>
+                              {unreadAlerts.length > 0 && (
+                                  <div style={{
+                                      background: 'var(--red)',
+                                      color: '#fff',
+                                      borderRadius: '50%',
+                                      width: 18, height: 18,
+                                      fontSize: 10, fontWeight: 700,
+                                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                  }}>
+                                      {unreadAlerts.length}
+                                  </div>
+                              )}
+                          </div>
+                          <Link to="/recommendations" style={{ fontSize: 12, color: 'var(--accent)' }}>
+                              View All
+                          </Link>
                       </div>
-                      <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                        {a.message}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-            }
-          </Card>
+                      {unreadAlerts.length === 0
+                          ? <p style={{ fontSize: 13, color: 'var(--text-muted)', textAlign: 'center', padding: '16px 0' }}>
+                              No alerts
+                          </p>
+                          : <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                              {unreadAlerts.slice(0, 4).map(a => (
+                                  <div key={a.id} style={{
+                                      padding: '10px 12px',
+                                      borderRadius: 'var(--radius-sm)',
+                                      background: alertSeverityColor[a.severity] + '10',
+                                      borderLeft: `3px solid ${alertSeverityColor[a.severity]}`,
+                                  }}>
+                                      <div style={{ marginBottom: 4 }}>
+                                          <Badge color={alertSeverityColor[a.severity]}>
+                                              {alertSeverityLabel[a.severity]}
+                                          </Badge>
+                                      </div>
+                                      <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                                          {a.message}
+                                      </p>
+                                  </div>
+                              ))}
+                          </div>
+                      }
+                  </Card>
 
           {/* Latest Body Metrics */}
           {latestMetrics && (<Card className="fade-in-4">

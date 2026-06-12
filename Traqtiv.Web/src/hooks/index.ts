@@ -93,21 +93,27 @@ export const useMarkAlertRead = () => {
     onSuccess: () => qc.invalidateQueries({ queryKey: ['alerts'] }),
   })
 }
-
-// ─── Weather ──────────────────────────────────────────────
-export const useWeather = () => {
-    const [coords, setCoords] = useState<{ lat: number, lng: number } | null>(null)
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            pos => setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude })
-        )
-    }, [])
-
-    return useQuery({
-        queryKey: ['weather', coords],
-        queryFn: () => coords ? weatherService.getCurrent(coords.lat, coords.lng) : Promise.reject(),
-        enabled: !!coords,
-        staleTime: 5 * 60 * 1000,
+export const useMarkRecommendationRead = () => {
+    const qc = useQueryClient()
+    return useMutation({
+        mutationFn: (id: string) => recommendationService.markRecommendationRead(id),
+        onSuccess: () => qc.invalidateQueries({ queryKey: ['recommendations'] }),
     })
 }
+    // ─── Weather ──────────────────────────────────────────────
+    export const useWeather = () => {
+        const [coords, setCoords] = useState<{ lat: number, lng: number } | null>(null)
+
+        useEffect(() => {
+            navigator.geolocation.getCurrentPosition(
+                pos => setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+            )
+        }, [])
+
+        return useQuery({
+            queryKey: ['weather', coords],
+            queryFn: () => coords ? weatherService.getCurrent(coords.lat, coords.lng) : Promise.reject(),
+            enabled: !!coords,
+            staleTime: 5 * 60 * 1000,
+        })
+    }

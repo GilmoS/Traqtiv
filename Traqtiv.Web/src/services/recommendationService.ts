@@ -15,5 +15,8 @@ export const recommendationService = {
     apiClient.get<AlertDto[]>('/api/recommendation/alerts').then(r => r.data),
 // Marks a specific alert as read by its ID
   markAlertRead: (id: string) =>
-    apiClient.put<BaseResponseDto>(`/api/recommendation/alerts/${id}/read`).then(r => r.data),
+        apiClient.put<BaseResponseDto>(`/api/recommendation/alerts/${id}/read`).then(r => r.data),
+    // Marks a specific recommendation as read by its ID
+    markRecommendationRead: (id: string) =>
+        apiClient.put<BaseResponseDto>(`/api/recommendation/recommendations/${id}/read`).then(r => r.data),
 }

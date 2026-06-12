@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Bell, Lightbulb, CheckCheck, Cloud, TrendingUp, AlertTriangle } from 'lucide-react'
-import { useRecommendations, useAlerts, useMarkAlertRead } from '../hooks'
+import { useRecommendations, useAlerts, useMarkAlertRead, useMarkRecommendationRead } from '../hooks'
 import { Badge, Button, Spinner, EmptyState } from '../components/ui'
 import { alertSeverityColor, alertSeverityLabel, recommendationTypeLabel, formatDateTime } from '../utils'
 import { AlertSeverity, RecommendationType } from '../types'
@@ -31,9 +31,10 @@ export function RecommendationsPage() {
   const { data: alerts = [], isLoading: aLoading , isError: aError } = useAlerts()
   const markRead = useMarkAlertRead()
   const [tab, setTab] = useState<'alerts' | 'recommendations'>('alerts')
-
+  const markRecRead = useMarkRecommendationRead()
   const unreadAlerts = alerts.filter(a => !a.isRead)
   const highAlerts = alerts.filter(a => a.severity === AlertSeverity.High && !a.isRead)
+  const unreadRecommendations = recommendations.filter(r => !r.isRead)
   
   return (
     <div style={{ padding: '28px 32px', maxWidth: 900 }}>
@@ -69,7 +70,7 @@ export function RecommendationsPage() {
             color: tab === t ? 'var(--text-primary)' : 'var(--text-muted)',
             transition: 'all 0.15s',
           }}>
-            {t === 'alerts' ? `Alerts (${alerts.length})` : `Recommendations (${recommendations.length})`}
+                {t === 'alerts' ? `Alerts (${unreadAlerts.length})` : `Recommendations (${unreadRecommendations.length})`}
           </button>
         ))}
       </div>
@@ -88,8 +89,8 @@ export function RecommendationsPage() {
             }}>
               Unable to connect to server. Please try again later.
             </div>
-            : alerts.length === 0 ? <EmptyState icon={<Bell />} message="No alerts — the system is monitoring you!" />
-              : [...alerts].sort((a, b) => { if (a.isRead !== b.isRead) return a.isRead ? 1 : -1
+            : unreadAlerts.length === 0 ? <EmptyState icon={<Bell />} message="No alerts — the system is monitoring you!" />
+                  : [...unreadAlerts].sort((a, b) => { if (a.isRead !== b.isRead) return a.isRead ? 1 : -1
                     return b.severity - a.severity
                   })
                   .map(alert => (
@@ -146,7 +147,7 @@ export function RecommendationsPage() {
       {tab === 'recommendations' && (
         <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {rLoading ?
-           <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div>: recommendations.length === 0 ? <EmptyState icon={<Lightbulb />} message="No recommendations yet" />
+                      <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><Spinner size={28} /></div> : unreadRecommendations.length === 0 ? <EmptyState icon={<Lightbulb />} message="No recommendations yet" />
             : rError
             ? <div style={{
               padding: '16px 20px',
@@ -157,8 +158,8 @@ export function RecommendationsPage() {
               fontSize: 14,
                }}>
               Unable to connect to server. Please try again later.
-              </div>  
-              : [...recommendations].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map(rec => (
+                              </div>
+                   : [...unreadRecommendations].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map(rec => (
                     <div 
                         key={rec.id} style={{
                       padding: '16px 20px',
@@ -190,7 +191,14 @@ export function RecommendationsPage() {
                           <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                             {rec.message}
                           </p>
-                        </div>
+                          </div>
+                          {!rec.isRead && (
+                              <Button variant="ghost" size="sm"
+                                  onClick={() => markRecRead.mutate(rec.id)}
+                                  style={{ color: 'var(--accent)', flexShrink: 0 }}>
+                                  <CheckCheck size={14} /> Mark as Read
+                              </Button>
+                          )}
                       </div>
                     </div>
                   ))

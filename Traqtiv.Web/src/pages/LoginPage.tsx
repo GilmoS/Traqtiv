@@ -44,24 +44,23 @@ export function LoginPage() {
     }}>
       <div style={{ width: '100%', maxWidth: 400 }} className="fade-in">
 
-        {/* Logo */}
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div style={{
-            width: 56, height: 56,
-            background: 'var(--accent)',
-            borderRadius: 14,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 16px',
-          }}>
-            <Zap size={28} color="#0a0c0f" fill="#0a0c0f" />
-          </div>
-          <h1 style={{ fontSize: 32, fontWeight: 800, color: 'var(--text-primary)' }}>
-            traqtiv
-          </h1>
-          <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4, letterSpacing: '0.08em' }}>
-            TRACK. ACTIV. FITNESS.
-          </p>
-        </div>
+
+              {/* Logo */}
+              <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid var(--border)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <img
+                          src="/appicon.png"
+                          style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'contain' }} />
+                      <div>
+                          <div style={{ fontWeight: 800, fontSize: 20, color: 'var(--text-primary)' }}>
+                              traqtiv
+                          </div>
+                          <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
+                              TRACK. ACTIV. FITNESS.
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
         
         {/* Login Form */}
