@@ -12,7 +12,7 @@ namespace Traqtiv.API.Services
     {
         private readonly ISmartFitnessDal _dal;
         private readonly IConfiguration _configuration;
-        private ISmartFitnessDal @object;
+        
 
         /// Initializes a new instance of the AuthService" class.
         public AuthService(ISmartFitnessDal dal, IConfiguration configuration)
@@ -21,10 +21,7 @@ namespace Traqtiv.API.Services
             _configuration = configuration;
         }
 
-        public AuthService(ISmartFitnessDal @object)
-        {
-            this.@object = @object;
-        }
+        
 
         /// Registers a new user with the provided registration details.
         ///  This method performs basic validation (email, password length, name) using ValidationHelper.
