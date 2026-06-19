@@ -91,7 +91,8 @@ namespace Traqtiv.API.Services
             };
         }
 
-        public async Task AddDailyActivityAsync(Guid userId, DailyActivityDto activity)
+        //not in MVP scope, but can be implemented later if needed
+        public Task AddDailyActivityAsync(Guid userId, DailyActivityDto activity)
         {
             throw new NotImplementedException();
         }

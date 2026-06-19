@@ -99,7 +99,8 @@ namespace Traqtiv.API.Services
             await _dal.AddMetricsAsync(metrics);
         }
 
-        public  Task AddBodyMetricsAsync(Guid userId, BodyMetrics metrics)
+        // Not in MVP scope - placeholder for future implementation
+        public Task AddBodyMetricsAsync(Guid userId, BodyMetrics metrics)
         {
             throw new NotImplementedException();
         }
