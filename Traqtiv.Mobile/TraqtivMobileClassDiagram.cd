@@ -1,549 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="Traqtiv.Mobile.Helpers.AlertHelper" Collapsed="true">
-    <Position X="68.75" Y="1.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.AlertHelper">
+    <Position X="20" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAACAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\AlertHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.AppConstants" Collapsed="true">
-    <Position X="70.5" Y="1.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.AppConstants">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Traqtiv.Mobile.Helpers.AppConstants.Routes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\AppConstats.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\AppConstats.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.ConnectivityHelper" Collapsed="true">
-    <Position X="72.25" Y="1.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.ConnectivityHelper">
+    <Position X="23.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Helpers\ConnectivityHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.IntToBoolConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="74" Y="1.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.IntToBoolConverter" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\IntToBoolConverter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.LocationHelper" Collapsed="true">
-    <Position X="68.75" Y="2.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.LocationHelper">
+    <Position X="20" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\LocationHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.SecureStorageHelper" Collapsed="true">
-    <Position X="70.5" Y="2.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.SecureStorageHelper">
+    <Position X="21.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Helpers\SecureStorageHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.StatusColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="72.25" Y="2.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.StatusColorConverter" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\StatusColorConverter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.StringToBoolConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="74" Y="2.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.StringToBoolConverter" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\StringToBoolConverter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.TabColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="68.75" Y="3.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.TabColorConverter" BaseTypeListCollapsed="true">
+    <Position X="20" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\TabColorConverter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.TaskExtensions" Collapsed="true">
-    <Position X="70.5" Y="3.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.TaskExtensions">
+    <Position X="21.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Helpers\TaskExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.TypeColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="72.25" Y="3.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.TypeColorConverter" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\TypeColorConverter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Traqtiv.Mobile.Helpers.WeatherHelper" Collapsed="true">
-    <Position X="74" Y="3.75" Width="1.5" />
+  <Class Name="Traqtiv.Mobile.Helpers.WeatherHelper">
+    <Position X="25.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helpers\WeatherHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Traqtiv.Mobile.Models.SmartFitnessClient" Collapsed="true">
-    <Position X="60.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAgREgAAgABAQAEjFAQgAIAAAAgAAAgAgALCwQEgCA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.ActivitySummaryDto" Collapsed="true">
-    <Position X="58.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAhQAABIAAAAAIAAEAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.AddDailyActivityDto" Collapsed="true">
-    <Position X="60.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAgAAAgAAAAAAAAAAAAAAABAAAAAgAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.AddMetricsDto" Collapsed="true">
-    <Position X="62" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAQACAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.AddWorkoutDto" Collapsed="true">
-    <Position X="63.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAEAAAgAAAAAAAAAAAAgAAAAAABAQAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.AlertDto" Collapsed="true">
-    <Position X="65.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAACAAEAAAAgAAAAAAAQAAIAQAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.AuthResponseDto" Collapsed="true">
-    <Position X="58.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAIAABAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.BodyMetricsDto" Collapsed="true">
-    <Position X="60.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAAIQAiAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.DailyActivityDto" Collapsed="true">
-    <Position X="62" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAgAAAgAAAAAAAAAgAAAAABAAAAIgAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.LoginRequestDto" Collapsed="true">
-    <Position X="63.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.RecommendationDto" Collapsed="true">
-    <Position X="65.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAACAAEAAAAgAAAAAAAQAAIAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.RegisterRequestDto" Collapsed="true">
-    <Position X="58.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAg=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.UpdateProfileDto" Collapsed="true">
-    <Position X="62" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAg=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.UpdateWorkoutDto" Collapsed="true">
-    <Position X="63.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAAEAAAgAAAAAAAAAAAAgAAAAAABAQAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.UserProfileDto" Collapsed="true">
-    <Position X="65.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAAgAQAAAAAAAAIAAAAAg=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.WeatherResponseDto" Collapsed="true">
-    <Position X="58.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAggAAAAAAAABIAAEAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.WorkoutDto" Collapsed="true">
-    <Position X="60.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAiAAAEAAAgAAAAAAAAAAAAggAAAAABAQAAIAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.ApiException" Collapsed="true">
-    <Position X="56" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAEAAAAAAAACAAAAAAAIAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Models.ApiException&lt;TResult&gt;" Collapsed="true">
-    <Position X="56" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.ApiClient" Collapsed="true">
-    <Position X="84" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Services\ApiClient.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.AuthService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="85.75" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EgAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAASAAAAAAA=</HashCode>
-      <FileName>Services\AuthService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.BodyMetricsService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="87.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAQAEAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\BodyMetricsService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.DailyActivityService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="89.25" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAABAAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
-      <FileName>Services\DailyActivityService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.HealthService" Collapsed="true">
-    <Position X="84" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAQAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
-      <FileName>Services\HealthService.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.NavigationService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="85.75" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\NavigationService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.RecommendationService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="87.5" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAACAAAAAQAAAAAAAEAAAAAAAAAAAABAAAAAAAA=</HashCode>
-      <FileName>Services\RecommendationService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.UserService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="89.25" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAEAAAAAA=</HashCode>
-      <FileName>Services\UserService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.WeatherService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="84" Y="8.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\WeatherService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.Services.WorkoutService" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="85.75" Y="8.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EEAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAACEAQAAA=</HashCode>
-      <FileName>Services\WorkoutService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.AddWorkoutViewModel" Collapsed="true">
-    <Position X="83" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAQAAAAAEAAAAAAJgAAwBAAAoEAAAAQRgAAAAAAACA=</HashCode>
-      <FileName>ViewModels\AddWorkoutViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.BaseViewModel" Collapsed="true">
-    <Position X="92" Y="11.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAIAAAAAAAAAAAEQAAAIAAAAACAAAAAgAAAQ=</HashCode>
-      <FileName>ViewModels\BaseViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.BodyMetricsViewModel" Collapsed="true">
-    <Position X="94.25" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAgACAAAAAUAAAAAAAgAAAAAAAAABAAAAAAAI=</HashCode>
-      <FileName>ViewModels\BodyMetricsViewModel .cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.DailyActivityViewModel" Collapsed="true">
-    <Position X="98.75" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAIAAACQAAAAAAIgAAAABAgAAAAAAAAACCQAAAAAI=</HashCode>
-      <FileName>ViewModels\DailyActivityViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.HomeViewModel" Collapsed="true">
-    <Position X="85.25" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAARAAAJAAIAAAgAhIgAAAAAAAAAA4AAAAACE=</HashCode>
-      <FileName>ViewModels\HomeViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.LoginViewModel" Collapsed="true">
-    <Position X="89.75" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgQAAAAAAAAAAAAAIAAAAAAgAAAAAAAAIAAAAAAAAAE=</HashCode>
-      <FileName>ViewModels\LoginViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.ProfileViewModel" Collapsed="true">
-    <Position X="96.5" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAGgAAAAAQABAIAAIAEAAAAggAABAAAAAAAUAAAQACU=</HashCode>
-      <FileName>ViewModels\ProfileViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.RecommendationsViewModel" Collapsed="true">
-    <Position X="101" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAIAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAABQAAAAAAA=</HashCode>
-      <FileName>ViewModels\RecommendationsViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.RegisterViewModel" Collapsed="true">
-    <Position X="87.5" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAUAAAAAAAAAAAAAIAGAAAEgAAAAAAAgAAAAAAAQAAE=</HashCode>
-      <FileName>ViewModels\RegisterViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.ViewModels.WorkoutsViewModel" Collapsed="true">
-    <Position X="92" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEEAAAAAIAAAAAAAAAAQAABAAgAACAAAACA=</HashCode>
-      <FileName>ViewModels\WorkoutsViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.Components.BottomNavBar" Collapsed="true">
-    <Position X="102.5" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\Components\BottomNavBar.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.AddWorkoutPage" Collapsed="true">
-    <Position X="99" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\AddWorkoutPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.BodyMetricsPage" Collapsed="true">
-    <Position X="100.75" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\BodyMetricsPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.DailyActivityPage" Collapsed="true">
-    <Position X="104.25" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\DailyActivityPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.HomePage" Collapsed="true">
-    <Position X="99" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\HomePage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.LoginPage" Collapsed="true">
-    <Position X="100.75" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\LoginPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.ProfilePage" Collapsed="true">
-    <Position X="102.5" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\ProfilePage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.RecommendationsPage" Collapsed="true">
-    <Position X="104.25" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\RecommendationsPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.RegisterPage" Collapsed="true">
-    <Position X="99" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\RegisterPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.SplashPage" Collapsed="true">
-    <Position X="100.75" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAIIAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\SplashPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Traqtiv.Mobile.Views.WorkoutsPage" Collapsed="true">
-    <Position X="102.5" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\WorkoutsPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IAuthService" Collapsed="true">
-    <Position X="65.75" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAASAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IAuthService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IBodyMetricsService" Collapsed="true">
-    <Position X="68" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IBodyMetricsService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IDailyActivityService" Collapsed="true">
-    <Position X="72.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IDailyActivityService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.INavigationService" Collapsed="true">
-    <Position X="77" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\INavigationService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IRecommendationService" Collapsed="true">
-    <Position X="81.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IRecommendationService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IService" Collapsed="true">
-    <Position X="73.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IUserService" Collapsed="true">
-    <Position X="70.25" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IUserService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IWeatherService" Collapsed="true">
-    <Position X="74.75" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Services\Interfaces\IWeatherService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Traqtiv.Mobile.Services.Interfaces.IWorkoutService" Collapsed="true">
-    <Position X="79.25" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACEAQAAA=</HashCode>
-      <FileName>Services\Interfaces\IWorkoutService.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Enum Name="Traqtiv.Mobile.Models.AlertSeverity" Collapsed="true">
-    <Position X="58.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Traqtiv.Mobile.Models.AlertType" Collapsed="true">
-    <Position X="60.25" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAEAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Traqtiv.Mobile.Models.RecommendationType" Collapsed="true">
-    <Position X="62" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAEAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Traqtiv.Mobile.Models.WorkoutStatus" Collapsed="true">
-    <Position X="63.75" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Traqtiv.Mobile.Models.WorkoutType" Collapsed="true">
-    <Position X="65.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIACAAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\SmartFitnessClient.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

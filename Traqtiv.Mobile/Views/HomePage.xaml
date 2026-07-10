@@ -14,9 +14,6 @@
                 <!-- Header -->
                 <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,24">
                     <VerticalStackLayout Grid.Column="0" Spacing="2">
-                        <Label Text="Good morning,"
-                               FontSize="13"
-                               TextColor="{StaticResource TextSecondaryColor}"/>
                         <Label Text="Welcome back 👋"
                                FontSize="22"
                                FontAttributes="Bold"
