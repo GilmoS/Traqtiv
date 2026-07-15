@@ -47,33 +47,45 @@
                             HorizontalScrollBarVisibility="Never"
                             Margin="0,0,0,20">
 					<HorizontalStackLayout Spacing="8">
-						<Border BackgroundColor="{StaticResource PrimaryColor}"
+						<Border BackgroundColor="{Binding SelectedFilter, Converter={StaticResource TypeColorConverter}, ConverterParameter=All}"
                                 StrokeShape="RoundRectangle 20"
                                 Padding="16,6">
 							<Label Text="All"
                                    FontSize="13"
                                    TextColor="{StaticResource TextPrimaryColor}"/>
+							<Border.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterByTypeCommand}" CommandParameter="All"/>
+							</Border.GestureRecognizers>
 						</Border>
-						<Border BackgroundColor="{StaticResource SurfaceColor}"
+						<Border BackgroundColor="{Binding SelectedFilter, Converter={StaticResource TypeColorConverter}, ConverterParameter=Strength}"
                                 StrokeShape="RoundRectangle 20"
                                 Padding="16,6">
 							<Label Text="Strength"
                                    FontSize="13"
-                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Border.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterByTypeCommand}" CommandParameter="Strength"/>
+							</Border.GestureRecognizers>
 						</Border>
-						<Border BackgroundColor="{StaticResource SurfaceColor}"
+						<Border BackgroundColor="{Binding SelectedFilter, Converter={StaticResource TypeColorConverter}, ConverterParameter=Cardio}"
                                 StrokeShape="RoundRectangle 20"
                                 Padding="16,6">
 							<Label Text="Cardio"
                                    FontSize="13"
-                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Border.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterByTypeCommand}" CommandParameter="Cardio"/>
+							</Border.GestureRecognizers>
 						</Border>
-						<Border BackgroundColor="{StaticResource SurfaceColor}"
+						<Border BackgroundColor="{Binding SelectedFilter, Converter={StaticResource TypeColorConverter}, ConverterParameter=Flexibility}"
                                 StrokeShape="RoundRectangle 20"
                                 Padding="16,6">
 							<Label Text="Flex"
                                    FontSize="13"
-                                   TextColor="{StaticResource TextSecondaryColor}"/>
+                                   TextColor="{StaticResource TextPrimaryColor}"/>
+							<Border.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding FilterByTypeCommand}" CommandParameter="Flexibility"/>
+							</Border.GestureRecognizers>
 						</Border>
 					</HorizontalStackLayout>
 				</ScrollView>
@@ -148,7 +160,7 @@
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center">
 													<Label.GestureRecognizers>
-														<TapGestureRecognizer
+														<TapGestureRecognizer x:DataType="{x:Null}"
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutsViewModel}}, Path=SelectWorkoutCommand}"
                                                             CommandParameter="{Binding .}"/>
 													</Label.GestureRecognizers>
@@ -163,7 +175,7 @@
                                                        HorizontalOptions="Center"
                                                        VerticalOptions="Center">
 													<Label.GestureRecognizers>
-														<TapGestureRecognizer
+														<TapGestureRecognizer x:DataType="{x:Null}"
                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutsViewModel}}, Path=DeleteWorkoutCommand}"
                                                             CommandParameter="{Binding .}"/>
 													</Label.GestureRecognizers>
@@ -175,11 +187,14 @@
 
 									<!-- Expanded Details (when selected) -->
 									<Grid ColumnDefinitions="Auto,Auto,*"
-                                          Margin="0,12,0,0"
-                                          IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutsViewModel}}, 
-                                                     Path=SelectedWorkout, 
-                                                     Converter={StaticResource IsSelectedConverter},
-                                                     ConverterParameter={Binding .}}">
+                                          Margin="0,12,0,0">
+										<Grid.IsVisible>
+											<Binding x:DataType="{x:Null}"
+                                                     Source="{RelativeSource AncestorType={x:Type vm:WorkoutsViewModel}}"
+                                                     Path="SelectedWorkout"
+                                                     Converter="{StaticResource IsSelectedConverter}"
+                                                     ConverterParameter="{Binding .}"/>
+										</Grid.IsVisible>
 										<Border Grid.Column="0"
                                                 BackgroundColor="#0F192360"
                                                 StrokeShape="RoundRectangle 8"

@@ -56,19 +56,23 @@ export function RegisterPage() {
     }}>
       <div style={{ width: '100%', maxWidth: 420 }} className="fade-in">
 
-        {/* Logo */}
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{
-            width: 48, height: 48,
-            background: 'var(--accent)',
-            borderRadius: 12,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 12px',
-          }}>
-            <Zap size={22} color="#0a0c0f" fill="#0a0c0f" />
-          </div>
-          <h1 style={{ fontSize: 28, fontWeight: 800 }}>traqtiv</h1>
-        </div>
+        
+       {/* Logo */}
+              <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid var(--border)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <img
+                          src="/appicon.png"
+                          style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'contain' }} />
+                      <div>
+                          <div style={{ fontWeight: 800, fontSize: 20, color: 'var(--text-primary)' }}>
+                              traqtiv
+                          </div>
+                          <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
+                              TRACK. ACTIV. FITNESS.
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
         {/* Form Card */}
         <div style={{

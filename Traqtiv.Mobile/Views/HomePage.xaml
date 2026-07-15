@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Traqtiv.Mobile.ViewModels"
 			 xmlns:components="clr-namespace:Traqtiv.Mobile.Views.Components"
+             xmlns:models="clr-namespace:Traqtiv.Mobile.Models"
              x:Class="Traqtiv.Mobile.Views.HomePage"
+             x:DataType="vm:HomeViewModel"
              Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="*,Auto">
@@ -221,7 +223,7 @@
                 <CollectionView ItemsSource="{Binding RecentWorkouts}"
                                 Margin="0,0,0,20">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="models:WorkoutDto">
                             <Border BackgroundColor="{StaticResource SurfaceColor}"
                                     StrokeShape="RoundRectangle 12"
                                     Stroke="{StaticResource BorderColor}"
@@ -278,7 +280,7 @@
                            Margin="0,0,0,4"/>
                     <CollectionView ItemsSource="{Binding ActiveAlerts}">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="models:AlertDto">
                                 <Border BackgroundColor="#EF9F2715"
                                         StrokeShape="RoundRectangle 12"
                                         Stroke="#EF9F2740"

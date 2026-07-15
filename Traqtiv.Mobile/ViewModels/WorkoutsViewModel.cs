@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Traqtiv.Mobile.Helpers;
 using Traqtiv.Mobile.Models;
 using Traqtiv.Mobile.Services.Interfaces;
@@ -20,6 +21,11 @@ public partial class WorkoutsViewModel : BaseViewModel
 
     [ObservableProperty]
     private WorkoutDto? _selectedWorkout;
+
+    [ObservableProperty]
+    private string _selectedFilter = "All";
+
+    private List<WorkoutDto> _allWorkouts = new();
 
     // Initializes a new instance of the WorkoutsViewModel class, injecting the workout and navigation services.
     public WorkoutsViewModel( IWorkoutService workoutService,INavigationService navigationService)
@@ -44,14 +50,33 @@ public partial class WorkoutsViewModel : BaseViewModel
             IsBusy = true;
 
             var result = await _workoutService.GetWorkoutsAsync();
-            Workouts.Clear();
-            foreach (var w in result)
-                Workouts.Add(w);
+            _allWorkouts = result.ToList();
+            ApplyFilter();
         }
         finally
         {
             IsBusy = false;
         }
+    }
+
+    // This command is executed when the user taps a filter tab, filtering the displayed workouts by type ("All", "Strength", "Cardio", or "Flexibility").
+    [RelayCommand]
+    private void FilterByType(string type)
+    {
+        SelectedFilter = type;
+        ApplyFilter();
+    }
+
+    // Repopulates the Workouts collection from the full loaded list based on the currently selected filter.
+    private void ApplyFilter()
+    {
+        var filtered = SelectedFilter == "All"
+            ? _allWorkouts
+            : _allWorkouts.Where(w => w.Type.ToString() == SelectedFilter);
+
+        Workouts.Clear();
+        foreach (var w in filtered)
+            Workouts.Add(w);
     }
 
     // This command is executed when the user wants to add a new workout, navigating to the AddWorkout view.

@@ -92,14 +92,17 @@
 
                                     <!-- Mark as Read Button -->
                                     <Button Text="✓ Mark as Read"
-                                            Command="{Binding BindingContext.MarkAlertAsReadCommand, Source={x:Reference ThisPage}}"
                                             CommandParameter="{Binding .}"
                                             BackgroundColor="{StaticResource PrimaryColor}"
                                             TextColor="{StaticResource TextPrimaryColor}"
                                             FontSize="13"
                                             FontAttributes="Bold"
                                             HeightRequest="36"
-                                            CornerRadius="8"/>
+                                            CornerRadius="8">
+                                        <Button.Command>
+                                            <Binding x:DataType="{x:Null}" Path="BindingContext.MarkAlertAsReadCommand" Source="{x:Reference ThisPage}"/>
+                                        </Button.Command>
+                                    </Button>
 
                                 </VerticalStackLayout>
                             </Border>
@@ -149,14 +152,17 @@
                                     
                                     <!-- Mark as Read Button -->
                                     <Button Text="✓ Mark as Read"
-                                            Command="{Binding BindingContext.MarkRecommendationAsReadCommand, Source={x:Reference ThisPage}}"
                                             CommandParameter="{Binding .}"
                                             BackgroundColor="{StaticResource PrimaryColor}"
                                             TextColor="White"
                                             FontSize="13"
                                             FontAttributes="Bold"
                                             HeightRequest="36"
-                                            CornerRadius="8"/>  
+                                            CornerRadius="8">
+                                        <Button.Command>
+                                            <Binding x:DataType="{x:Null}" Path="BindingContext.MarkRecommendationAsReadCommand" Source="{x:Reference ThisPage}"/>
+                                        </Button.Command>
+                                    </Button>
 
                                 </VerticalStackLayout>
                             </Border>

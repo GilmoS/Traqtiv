@@ -19,7 +19,17 @@ export function DashboardPage() {
   const { data: weather } = useWeather()
   const { data: metrics = [] } = useBodyMetrics()
 
-  const today = activities.find(a =>a.date.startsWith(new Date().toISOString().split('T')[0])) // Find today's activity
+const isSameLocalDay = (dateStr: string, ref: Date): boolean => {
+  const d = new Date(dateStr)
+  return d.getFullYear() === ref.getFullYear() &&
+         d.getMonth() === ref.getMonth() &&
+         d.getDate() === ref.getDate()
+}
+
+const today = activities.find(a => isSameLocalDay(a.date, new Date()))
+
+
+  //const today = activities.find(a =>a.date.startsWith(new Date().toISOString().split('T')[0])) // Find today's activity
   const completedWorkouts = workouts.filter(w => w.status === WorkoutStatus.Completed) // Get completed workouts for stats and charts
   const recentWorkouts = [...workouts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 5) // Get 5 most recent workouts for display
   const unreadAlerts = alerts.filter(a => !a.isRead)

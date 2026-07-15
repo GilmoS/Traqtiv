@@ -12,6 +12,7 @@
 			<helpers:TypeColorConverter x:Key="TypeColorConverter"/>
 			<helpers:StatusColorConverter x:Key="StatusColorConverter"/>
 			<helpers:StringToBoolConverter x:Key="StringToBoolConverter"/>
+			<helpers:IsSelectedConverter x:Key="IsSelectedConverter"/>
 
 
 			<!-- Colors -->

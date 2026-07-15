@@ -37,48 +37,48 @@ public class HealthService
     }
     // Fetches today's activity data from the device's health services.
     // The implementation includes platform-specific code to retrieve data from Health Connect on Android and HealthKit on iOS.
-    public async Task<AddDailyActivityDto?> GetTodayActivityAsync()
+    public Task<AddDailyActivityDto?> GetTodayActivityAsync()
     {
         try
         {
 #if ANDROID || IOS // Fetch today's activity data from Health Connect (Android) or HealthKit (iOS)
-            
-            return new AddDailyActivityDto // Placeholder data, replace with actual data retrieval logic
+
+            return Task.FromResult<AddDailyActivityDto?>(new AddDailyActivityDto // Placeholder data, replace with actual data retrieval logic
             {
                 Steps = 0,
                 CaloriesBurned = 0,
                 ActiveMinutes = 0,
                 DistanceKm = 0,
                 Date = DateTime.Today
-            };
+            });
 #else
-            return null;
+            return Task.FromResult<AddDailyActivityDto?>(null);
 #endif
         }
         catch (Exception)
         {
-            return null;
+            return Task.FromResult<AddDailyActivityDto?>(null);
         }
     }
     // Fetches the latest health metrics from the device's health services.
-    public async Task<AddMetricsDto?> GetLatestMetricsAsync()
+    public Task<AddMetricsDto?> GetLatestMetricsAsync()
     {
         try
         {
 #if ANDROID || IOS // Fetch latest health metrics from Health Connect (Android) or HealthKit (iOS)
-            return new AddMetricsDto // Placeholder data, replace with actual data retrieval logic
+            return Task.FromResult<AddMetricsDto?>(new AddMetricsDto // Placeholder data, replace with actual data retrieval logic
             {
                 Weight = 0,
                 RestingHeartRate = 0,
                 Bmi = 0
-            };
+            });
 #else
-            return null;
+            return Task.FromResult<AddMetricsDto?>(null);
 #endif
         }
         catch (Exception)
         {
-            return null;
+            return Task.FromResult<AddMetricsDto?>(null);
         }
     }
 }
